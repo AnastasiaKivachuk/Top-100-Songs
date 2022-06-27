@@ -1,0 +1,20 @@
+@import '../../assets/scss/helpers/variables';
+
+.error {
+  color: $systemRedLight;
+}
+
+.wrapInput {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+
+.form {
+  width: 100%;
+}
+
+.container {
+  justify-content: center;
+}

@@ -1,0 +1,16 @@
+{
+  "extends": "stylelint-config-sass-guidelines",
+  "rules": {
+    "selector-class-pattern": "^[a-zA-Z0-9-_]+$",
+    "scss/dollar-variable-pattern": "^_?[a-z][a-zA-Z0-9]+$",
+    "scss/at-mixin-pattern": "^[a-z][a-zA-Z0-9-]+$",
+    "max-nesting-depth": 7,
+    "value-no-vendor-prefix": null,
+    "property-no-vendor-prefix": null,
+    "color-hex-case": "upper",
+    "selector-max-compound-selectors": 7,
+    "selector-no-qualifying-type": [false, {
+      "ignore": ["attribute", "class"]
+    } ]
+  }
+}

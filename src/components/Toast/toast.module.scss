@@ -1,0 +1,95 @@
+/* stylelint-disable block-no-empty */
+@import '../../assets/scss/helpers/typography';
+
+.progressClassName {
+  opacity: 0 !important;
+}
+
+.toast-container-success {
+  background-color: $systemGreenDark;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba($primaryLightLabel, 0.8), 0 6px 16px rgba($primaryLightLabel, 0.8);
+  max-width: 388px;
+  padding: 16px;
+}
+
+.toast-container-info {
+  background-color: $systemBlueDark;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba($primaryLightLabel, 0.8), 0 6px 16px rgba($primaryLightLabel, 0.8);
+  max-width: 388px;
+  padding: 16px;
+}
+
+.toast-container-error {
+  background-color: $systemRedDark;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba($primaryLightLabel, 0.8), 0 6px 16px rgba($primaryLightLabel, 0.8);
+  max-width: 388px;
+  padding: 16px;
+}
+
+.toast-container-warning {
+  background-color: $systemOrangeDark;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba($primaryLightLabel, 0.8), 0 6px 16px rgba($primaryLightLabel, 0.8);
+  max-width: 388px;
+  padding: 16px;
+}
+
+.success {
+  @include body-s-semibold;
+  color: $primaryDarkLabel;
+  position: relative;
+}
+
+.info {
+  @include body-s-semibold;
+  color: $primaryDarkLabel;
+}
+
+.error {
+  @include body-s-semibold;
+  color: $primaryDarkLabel;
+}
+
+.warning {
+  @include body-s-semibold;
+  color: $primaryDarkLabel;
+}
+
+.wrapBody {
+  align-items: center;
+  display: flex;
+  max-width: 388px;
+}
+
+.wrapBodyWithoutDescription {
+  align-items: flex-start;
+}
+
+.messageBlock {
+  padding-left: 12px;
+  width: 100%;
+}
+
+.description {
+  @include body-s;
+  color: $primaryDarkLabel;
+  text-transform: none;
+}
+
+.toastBody {
+  padding: 0;
+
+  :global(.Toastify__toast-icon) {
+    display: none !important;
+  }
+}
+
+.close {
+  cursor: pointer;
+  @include media-breakpoint-down($_sm) {
+    padding-right: 20px;
+  }
+}

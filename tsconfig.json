@@ -1,0 +1,71 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": [
+        "./src/components/*"
+      ],
+      "@constants/*": [
+        "./src/constants/*"
+      ],
+      "@containers/*": [
+        "./src/containers/*"
+      ],
+      "@dtos/*": [
+        "./src/dtos/*"
+      ],
+      "@helpers/*": [
+        "./src/helpers/*"
+      ],
+      "@interfaces/*": [
+        "./src/interfaces/*"
+      ],
+      "@models/*": [
+        "./src/models/*"
+      ],
+      "@pages/*": [
+        "./src/pages/*"
+      ],
+      "@redux/*": [
+        "./src/redux/*"
+      ],
+      "@services/*": [
+        "./src/services/*"
+      ],
+      "@assets/*": [
+        "./src/assets/*"
+      ],
+      "@hooks/*": [
+        "./src/hooks/*"
+      ],
+      "@validators/*": [
+        "./src/validators/*"
+      ],
+      "@utils/*": [
+        "./src/utils/*"
+      ],
+      "@contexts/*": [
+        "./src/contexts/*"
+      ],
+      "@validation/*": [
+        "./src/validation/*"
+      ]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/_document.js"],
+  "exclude": ["node_modules"]
+}

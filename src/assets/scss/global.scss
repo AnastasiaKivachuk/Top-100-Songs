@@ -1,0 +1,68 @@
+/* stylelint-disable selector-max-id */
+@import './vendors/normalize';
+@import './helpers/fonts';
+@import './helpers/variables';
+@import './helpers/mixins';
+@import './helpers/typography';
+
+html,
+body,
+#__next {
+  height: 100%;
+}
+
+body,
+button {
+  font-family: 'Inter', sans-serif !important;
+}
+
+button {
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  padding: 0;
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+p {
+  margin: 0;
+}
+
+.pushable {
+  overflow-x: visible;
+}
+
+.ui.right.overlay.sidebar {
+  position: fixed;
+}
+
+body {
+  background-color: $secondaryDarkBackground;
+
+  h1 {
+    @include h1;
+  }
+
+  h2 {
+    @include h2;
+  }
+
+  h3 {
+    @include h3;
+  }
+
+  h4 {
+    @include h4;
+  }
+
+  a {
+    @include link();
+  }
+
+  section {
+    @include section-with-border();
+  }
+}
