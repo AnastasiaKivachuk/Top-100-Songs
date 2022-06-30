@@ -1,5 +1,4 @@
-{
-  "items": [
+[
     {
       "kind": "youtube#playlistItem",
       "etag": "nUzoleXuN3se-Pp8gXxZHJtwH14",
@@ -2280,5 +2279,4 @@
         "videoPublishedAt": "2022-01-12T17:00:16Z"
       }
     }
-  ]
-}
+]

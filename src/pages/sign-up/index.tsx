@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 
 import SignInSignUp from '@containers/SignInSignUp';
 import { PATH_SIGN_IN } from '@constants/routes.constants';
-import useFirebaseAuth from '@hooks/auth.hooks';
+import { useAuth } from '@contexts/auth.context';
 
 const props = {
   addedLink: { text: 'Already have an account? Sign in', link: PATH_SIGN_IN },
@@ -11,7 +11,8 @@ const props = {
 };
 
 const SignUpPage: FC = () => {
-  const { createUserWithEmailAndPassword } = useFirebaseAuth();
+  console.log('login');
+  const { createUserWithEmailAndPassword } = useAuth();
   return <SignInSignUp request={createUserWithEmailAndPassword} {...props} />;
 };
 

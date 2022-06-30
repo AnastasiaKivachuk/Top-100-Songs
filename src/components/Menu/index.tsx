@@ -8,12 +8,14 @@ import Typography from '@mui/material/Typography';
 
 import { PATH_INDEX } from '@constants/routes.constants';
 import { useSelector } from 'react-redux';
-import useFirebaseAuth from '@hooks/auth.hooks';
+import { StoreDTO } from '@dtos/store.dtos';
+import { useAuth } from '@contexts/auth.context';
 import styles from './styles.module.scss';
 
 function Menu(): JSX.Element {
-  const authUser = useSelector((state) => state.user.user);
-  const { signOut } = useFirebaseAuth();
+  const authUser = useSelector((state: StoreDTO) => state.user.user);
+  const { signOut } = useAuth();
+
   return (
     <MuiAppBar>
       <Toolbar>
@@ -27,10 +29,16 @@ function Menu(): JSX.Element {
               </Typography>
             </a>
           </Link>
+
           {authUser && (
-            <Typography variant="h6" className={styles.signOut} onClick={signOut}>
-              Sign out
-            </Typography>
+            <div>
+              <Typography variant="h6" className={styles.signOut} onClick={signOut}>
+                Hi, {authUser.email}!
+              </Typography>
+              <Typography variant="h6" className={styles.signOut} onClick={signOut} align="center">
+                Sign out
+              </Typography>
+            </div>
           )}
         </Grid>
       </Toolbar>

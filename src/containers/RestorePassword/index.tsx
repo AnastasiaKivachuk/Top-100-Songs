@@ -15,14 +15,14 @@ import LoadingButton from '@mui/lab/LoadingButton';
 
 import { showToast } from '@components/Toast';
 import { PATH_SIGN_IN } from '@constants/routes.constants';
-import useFirebaseAuth from '@hooks/auth.hooks';
 import { FIELD_NAMES, schema } from '@containers/RestorePassword/validation';
+import { useAuth } from '@contexts/auth.context';
 import styles from './styles.module.scss';
 
 function RestorePassword(): JSX.Element {
 
   const router = useRouter();
-  const { sendPasswordResetEmail } = useFirebaseAuth();
+  const { sendPasswordResetEmail } = useAuth();
 
   const {
     setValue, handleSubmit, setError, control, formState: { isSubmitting },
@@ -36,7 +36,7 @@ function RestorePassword(): JSX.Element {
   const onSubmit = async (data: {email: string}) => {
     try {
       const { email } = data;
-      const res = await sendPasswordResetEmail(email);
+      await sendPasswordResetEmail(email);
       showToast('Email is send', 'success');
       await router.push(PATH_SIGN_IN);
     } catch (error) {

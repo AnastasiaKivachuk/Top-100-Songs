@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { setUser } from '@redux/actions/actionCreator';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import firebase from '../../Firebase';
 
 const formatAuthUser = (user) => ({
@@ -10,10 +10,9 @@ const formatAuthUser = (user) => ({
 
 export default function useFirebaseAuth() {
   const [loading, setLoading] = useState(true);
-
   const dispatch = useDispatch();
 
-  const authStateChanged = (authState) => {
+  const authStateChanged = useCallback((authState) => {
     if (!authState) {
       setLoading(false);
       return;
@@ -25,23 +24,26 @@ export default function useFirebaseAuth() {
 
     setLoading(false);
 
-  };
+  }, []);
 
-  const clear = () => {
+  const clear = useCallback(() => {
     dispatch(setUser(null));
     setLoading(true);
-  };
+  }, []);
 
-  const signInWithEmailAndPassword = (email: string, password: string) => firebase.auth().signInWithEmailAndPassword(email, password);
+  const signInWithEmailAndPassword = useCallback((email: string, password: string) => (
+    firebase.auth().signInWithEmailAndPassword(email, password)), []);
 
-  const createUserWithEmailAndPassword = (email: string, password: string) => (
-    firebase.auth().createUserWithEmailAndPassword(email, password));
+  const createUserWithEmailAndPassword = useCallback((email: string, password: string) => (
+    firebase.auth().createUserWithEmailAndPassword(email, password)), []);
 
-  const sendPasswordResetEmail = (email: string) => firebase.auth().sendPasswordResetEmail(email);
+  const sendPasswordResetEmail = useCallback((email: string) => firebase.auth().sendPasswordResetEmail(email), []);
 
-  const signOut = () => firebase.auth().signOut().then(clear);
+  const signOut = useCallback(() => firebase.auth().signOut().then(clear), []);
 
   useEffect(() => {
+    // console.log(firebase.auth().currentUser, 'AAAAAAAAAAAa');
+    // dispatch(setUser(firebase.auth().currentUser));
     const unsubscribe = firebase.auth().onAuthStateChanged(authStateChanged);
     return () => unsubscribe();
   }, []);

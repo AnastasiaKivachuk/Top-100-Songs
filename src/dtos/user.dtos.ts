@@ -1,10 +1,4 @@
-export interface UserAdminDTO {
-  id: number
-  firstName: string
-  lastName: string
+export interface UserDTO {
+  uid: string
   email: string
-  isCurrentUser: boolean
-  // role: USER_ROLE
-  // photo?: FileResponseDTO
-  isRegistrationComplete?: boolean
 }

@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 
 import SignInSignUp from '@containers/SignInSignUp';
-import useFirebaseAuth from '@hooks/auth.hooks';
+import { useAuth } from '@contexts/auth.context';
 
 const SignInPage: FC = () => {
-  const { signInWithEmailAndPassword } = useFirebaseAuth();
+  const { signInWithEmailAndPassword } = useAuth();
 
   return <SignInSignUp request={signInWithEmailAndPassword} />;
 };

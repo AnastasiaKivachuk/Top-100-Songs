@@ -4,6 +4,7 @@ const initialState = {
   isDataLoading: false,
 };
 
+// eslint-disable-next-line default-param-last
 const loader = (state = initialState, { type, payload }) => {
   switch (type) {
     case SET_LOADING_DATA:

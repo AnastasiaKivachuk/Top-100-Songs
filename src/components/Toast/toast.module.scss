@@ -89,7 +89,4 @@
 
 .close {
   cursor: pointer;
-  @include media-breakpoint-down($_sm) {
-    padding-right: 20px;
-  }
 }

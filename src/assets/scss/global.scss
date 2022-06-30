@@ -2,7 +2,6 @@
 @import './vendors/normalize';
 @import './helpers/fonts';
 @import './helpers/variables';
-@import './helpers/mixins';
 @import './helpers/typography';
 
 html,
@@ -40,7 +39,7 @@ p {
 }
 
 body {
-  background-color: $secondaryDarkBackground;
+  background-color: $secondaryDarkLabel;
 
   h1 {
     @include h1;
@@ -62,7 +61,11 @@ body {
     @include link();
   }
 
-  section {
-    @include section-with-border();
+  p {
+    @include body-m()
+  }
+
+  span {
+    @include body-s()
   }
 }

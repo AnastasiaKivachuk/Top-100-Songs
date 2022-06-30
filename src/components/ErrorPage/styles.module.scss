@@ -1,0 +1,29 @@
+@import 'src/assets/scss/helpers/variables';
+@import 'src/assets/scss/helpers/typography';
+
+.pageWrap {
+  background-color: $secondaryDarkBackground;
+}
+
+.wrap {
+  background-color: $secondaryDarkBackground;
+  height: 100%;
+  padding: 204px 0 202px;
+  width: 100%;
+
+  h2 {
+    margin: 49px 0 0;
+  }
+
+  .subtitle {
+    @include body-m;
+    color: $secondaryDarkLabel;
+    font-weight: 400;
+    margin: 12px 0 32px;
+    max-width: 592px;
+  }
+
+  .btn {
+    width: fit-content;
+  }
+}

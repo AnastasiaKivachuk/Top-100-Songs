@@ -1,14 +1,16 @@
-import React, { FC } from 'react';
+import React from 'react';
 
 import { Container } from '@mui/material';
 import Menu from '@components/Menu';
 import styles from './styles.module.scss';
 
-const Layout: FC = ({ children }: { children: JSX.Element }) => (
-  <div>
-    <Menu />
-    <Container className={styles.container}>{children}</Container>
-  </div>
-);
+function Layout({ children }: { children: JSX.Element }): JSX.Element {
+  return (
+    <div>
+      <Menu />
+      <Container className={styles.container}>{children}</Container>
+    </div>
+  );
+}
 
 export default Layout;
