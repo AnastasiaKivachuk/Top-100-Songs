@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { initialRouterState } from 'connected-next-router';
@@ -7,16 +8,16 @@ import rootSaga from './sagas';
 
 const sagaMiddleware = createSagaMiddleware();
 
-const composeEnhancers = typeof window === 'object'
-    && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-  ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) : compose;
+// @ts-ignore
+const composeEnhancers = typeof window === 'object' && window?.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) : compose;
 
 const configureStore = (preloadedState) => {
+  // @ts-ignore
   const { asPath } = preloadedState.ctx || (typeof window === 'object' && Router.router) || {};
   let initialState;
   if (asPath) {
     initialState = {
-      router: initialRouterState(asPath),
+      router: initialRouterState(asPath as string),
     };
   }
   return createStore(
