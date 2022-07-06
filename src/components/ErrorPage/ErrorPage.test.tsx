@@ -9,7 +9,7 @@ const MockErrorData = {
   text: 'The server encountered an internal error or misconfiguration. Please, refresh this page or try again later.',
 };
 
-const setUp = (props: { error: string, text: string } | {}) => (
+const setUp = (props: { error: string, text: string } | Record<string, unknown>) => (
   render(<ThemeProvider theme={theme}><ErrorPage {...props} /></ThemeProvider>));
 
 describe('ErrorPage component', () => {

@@ -1,3 +1,4 @@
+import React from 'react';
 import type { NextPage } from 'next';
 import Details from '@containers/Details';
 
