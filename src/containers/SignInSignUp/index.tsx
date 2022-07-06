@@ -64,7 +64,7 @@ function SignInSignUp({
         removeLocalStorageItem('userData');
       }
 
-      const userData = await request(email, password);
+      await request(email, password);
 
       if (!isSignIn) { showToast('Success. Profile is created', 'success'); }
       await router.push(PATH_INDEX);
@@ -130,6 +130,7 @@ function SignInSignUp({
                     autoFocus
                     value={value}
                     onChange={onValueChange}
+                    placeholder="example.email@gmail.com"
                   />
                   {error?.message && <div className={styles.error}>{error?.message}</div>}
                 </div>
@@ -151,6 +152,7 @@ function SignInSignUp({
                     autoComplete="current-password"
                     value={value}
                     onChange={onValueChange}
+                    placeholder="******"
                   />
                   {error?.message && <div className={styles.error}>{error?.message}</div>}
                 </div>
@@ -161,7 +163,7 @@ function SignInSignUp({
               control={control}
               render={({ field: { value } }) => (
                 <FormControlLabel
-                  control={<Checkbox value="remember" color="primary" />}
+                  control={<Checkbox value={value} color="primary" />}
                   label="Remember me"
                   name={FIELD_NAMES.REMEMBER}
                   value={value}
@@ -176,6 +178,7 @@ function SignInSignUp({
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
               loading={isSubmitting}
+              data-testid="btn"
             >
               {title}
             </LoadingButton>

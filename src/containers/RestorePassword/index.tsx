@@ -40,7 +40,7 @@ function RestorePassword(): JSX.Element {
       showToast('Email is send', 'success');
       await router.push(PATH_SIGN_IN);
     } catch (error) {
-      showToast((error as Error).message, 'error');
+      showToast(`${(error as Error).message}. Please, try again`, 'error');
     }
   };
 
@@ -68,7 +68,13 @@ function RestorePassword(): JSX.Element {
           <Typography component="h1" variant="h5">
             Restore password
           </Typography>
-          <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={{ mt: 1 }} className={styles.form}>
+          <Box
+            component="form"
+            onSubmit={handleSubmit(onSubmit)}
+            sx={{ mt: 1 }}
+            className={styles.form}
+            data-testid="form"
+          >
             <Controller
               name={FIELD_NAMES.EMAIL}
               control={control}
@@ -85,6 +91,7 @@ function RestorePassword(): JSX.Element {
                     autoFocus
                     value={value}
                     onChange={onValueChange}
+                    placeholder="example.email@gmail.com"
                   />
                   {error?.message && <div className={styles.error}>{error?.message}</div>}
                 </div>
@@ -96,6 +103,8 @@ function RestorePassword(): JSX.Element {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
               loading={isSubmitting}
+              data-testid="btn"
+              onClick={handleSubmit(onSubmit)}
             >
               Restore password
             </LoadingButton>

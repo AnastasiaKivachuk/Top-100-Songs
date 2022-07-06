@@ -18,10 +18,10 @@ function Details(): JSX.Element {
   const { query } = useRouter();
   const [details, setDetails] = useState<null | SongDTO>(null);
   const [loading, setLoading] = useState(false);
-  const { topSongs } = useSelector((state: StoreDTO) => state.songs);
+  const topSongs = useSelector((state: StoreDTO) => state.songsReducer?.topSongs);
 
   useEffect(() => {
-    const detailsFromStore = topSongs.find((item) => item.id === query.id);
+    const detailsFromStore = topSongs?.find((item) => item.id === query.id);
 
     if (detailsFromStore) {
       return setDetails(detailsFromStore);
@@ -68,9 +68,10 @@ function Details(): JSX.Element {
             variant="h6"
           >Description
           </Typography>
-          {description.map((item) => (
+          {description.map((item, i) => (
             <Typography
               variant="body1"
+              key={`${item.slice(0, 5)}${i}`}
             >{item}
             </Typography>
           ))}

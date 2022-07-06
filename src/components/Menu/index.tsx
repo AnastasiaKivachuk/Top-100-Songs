@@ -13,7 +13,7 @@ import { useAuth } from '@contexts/auth.context';
 import styles from './styles.module.scss';
 
 function Menu(): JSX.Element {
-  const authUser = useSelector((state: StoreDTO) => state.user.user);
+  const authUser = useSelector((state: StoreDTO) => state.userReducer?.user);
   const { signOut } = useAuth();
 
   return (
@@ -29,10 +29,9 @@ function Menu(): JSX.Element {
               </Typography>
             </a>
           </Link>
-
           {authUser && (
             <div>
-              <Typography variant="h6" className={styles.signOut} onClick={signOut}>
+              <Typography variant="h6" className={styles.signOut}>
                 Hi, {authUser.email}!
               </Typography>
               <Typography variant="h6" className={styles.signOut} onClick={signOut} align="center">

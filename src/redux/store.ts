@@ -12,7 +12,6 @@ const composeEnhancers = typeof window === 'object'
   ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) : compose;
 
 const configureStore = (preloadedState) => {
-  // const routerMiddleware = createRouterMiddleware();
   const { asPath } = preloadedState.ctx || (typeof window === 'object' && Router.router) || {};
   let initialState;
   if (asPath) {

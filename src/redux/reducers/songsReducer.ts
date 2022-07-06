@@ -6,7 +6,7 @@ const initialState = {
 };
 
 // eslint-disable-next-line default-param-last
-const songs = (state = initialState, { type, payload }) => {
+const songsReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case SET_TOP_SONGS:
       return {
@@ -24,4 +24,4 @@ const songs = (state = initialState, { type, payload }) => {
   }
 };
 
-export default songs;
+export default songsReducer;

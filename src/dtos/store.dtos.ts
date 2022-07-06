@@ -43,8 +43,8 @@ export interface SongDTO {
 }
 
 export interface StoreDTO {
-  user: {user: UserDTO},
-  songs: {topSongs: SongDTO[], lastKey: number},
-  errors: {error: string},
-  loader: {isDataLoading: boolean},
+  userReducer: {user: UserDTO},
+  songsReducer: {topSongs: SongDTO[], lastKey: number},
+  errorsReducer: {error: string},
+  loaderReducer: {isDataLoading: boolean},
 }

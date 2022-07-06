@@ -2,10 +2,8 @@ import React from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import type { AppProps } from 'next/app';
-import { ConnectedRouter } from 'connected-next-router';
 
 import { CssBaseline, ThemeProvider } from '@mui/material';
-import { createTheme } from '@mui/material/styles';
 
 import { AuthenticationWrapper } from '@contexts/auth.context';
 import '@assets/scss/global.scss';
@@ -13,8 +11,7 @@ import Layout from '@containers/Layout';
 import { Provider } from 'react-redux';
 import store from '@redux/store';
 import ErrorPage from '@components/ErrorPage';
-
-const theme = createTheme();
+import { theme } from '@helpers/setupTheme';
 
 function MyApp({
   Component,

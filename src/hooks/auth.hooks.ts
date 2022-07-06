@@ -11,7 +11,6 @@ const formatAuthUser = (user) => ({
 export default function useFirebaseAuth() {
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
-
   const authStateChanged = useCallback((authState) => {
     if (!authState) {
       setLoading(false);
@@ -42,8 +41,6 @@ export default function useFirebaseAuth() {
   const signOut = useCallback(() => firebase.auth().signOut().then(clear), []);
 
   useEffect(() => {
-    // console.log(firebase.auth().currentUser, 'AAAAAAAAAAAa');
-    // dispatch(setUser(firebase.auth().currentUser));
     const unsubscribe = firebase.auth().onAuthStateChanged(authStateChanged);
     return () => unsubscribe();
   }, []);

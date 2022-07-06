@@ -29,6 +29,7 @@
   },
   "rules": {
     "@typescript-eslint/no-misused-promises": 0,
+    "consistent-return": "off",
     "react/function-component-definition": 1,
     "linebreak-style": 0,
     "indent": "off",

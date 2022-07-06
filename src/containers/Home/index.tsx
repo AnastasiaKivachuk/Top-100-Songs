@@ -12,25 +12,24 @@ import styles from './styles.module.scss';
 function Home(): JSX.Element {
   const dispatch = useDispatch();
 
-  const { topSongs, lastKey } = useSelector((state: StoreDTO) => state.songs);
-  const { isDataLoading } = useSelector((state: StoreDTO) => state.loader);
+  const stateSongs = useSelector((state: StoreDTO) => state.songsReducer);
+  const isDataLoading = useSelector((state: StoreDTO) => state.loaderReducer?.isDataLoading);
 
   const fetchMorePosts = () => {
-    if (lastKey > 0) {
+    if (stateSongs.lastKey > 0) {
       dispatch({ type: LOAD_MORE_SONGS });
     }
   };
 
   return (
     <div className={styles.container}>
-      <Typography variant="h3" className={styles.title}>TOP 100 Songs of 2022 - Billboard Hot 100 - Music Playlist
-        2022
+      <Typography variant="h3" className={styles.title}>TOP 100 Songs of 2022 - Billboard Hot 100 - Music Playlist 2022
       </Typography>
       <div className={styles.tableWrap}>
-        {topSongs?.length > 0
+        {stateSongs?.topSongs?.length > 0
           ? (
             <DataGrid
-              rows={topSongs || []}
+              rows={stateSongs?.topSongs || []}
               columns={columns}
               rowsPerPageOptions={[]}
               hideFooterPagination
@@ -42,7 +41,7 @@ function Home(): JSX.Element {
           : <Typography variant="h4" textAlign="center" className={styles.noData}>No Data</Typography>}
         {isDataLoading ? (
           <div className={styles.wrap}><CircularProgress /></div>
-        ) : (topSongs?.length > 0 && lastKey > 0) ? (
+        ) : (stateSongs?.topSongs?.length > 0 && stateSongs?.lastKey > 0) ? (
           <div className={styles.wrap}>
             <Button variant="contained" onClick={fetchMorePosts}>
               More songs

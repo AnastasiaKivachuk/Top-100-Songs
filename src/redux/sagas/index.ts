@@ -1,9 +1,9 @@
 import {
   put, call, takeLatest, select,
 } from 'redux-saga/effects';
+
 import { itemsFirstBatch, itemsNextBatch } from '@services/songs.service';
 import { PATH_INDEX } from '@constants/routes.constants';
-import { LOCATION_CHANGE } from 'connected-next-router';
 import {
   LOAD_MORE_SONGS,
   SET_LOADING_DATA,
@@ -23,7 +23,7 @@ export function* handleTopSongs() {
 export function* handleMoreSongs() {
   try {
     yield put({ type: SET_LOADING_DATA, payload: true });
-    const key = yield select((state) => state.songs.lastKey);
+    const key = yield select((state) => state.songsReducer.lastKey);
     const data = yield call(itemsNextBatch, key);
     yield put(setLoadMoreSongs(data));
   } catch {
@@ -35,9 +35,8 @@ export function* handleMoreSongs() {
 
 export function* watchSaga() {
   yield takeLatest(LOAD_MORE_SONGS, handleMoreSongs);
-  yield put({ type: SET_LOADING_DATA, payload: true });
   const path = yield select(({ router }) => router.location.pathname);
-  const { user } = yield select((state) => state.user);
+  const { user } = yield select((state) => state.userReducer);
   if (path === PATH_INDEX && user) {
     yield call(handleTopSongs);
   }

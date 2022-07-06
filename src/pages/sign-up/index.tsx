@@ -10,8 +10,7 @@ const props = {
   isSignIn: false,
 };
 
-const SignUpPage: FC = () => {
-  console.log('login');
+const SignUpPage: JSX.Element = () => {
   const { createUserWithEmailAndPassword } = useAuth();
   return <SignInSignUp request={createUserWithEmailAndPassword} {...props} />;
 };

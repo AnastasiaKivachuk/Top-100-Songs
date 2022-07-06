@@ -1,5 +1,3 @@
-import jsonData from 'file.json';
-import { setLoadMoreSongs } from '@redux/actions/actionCreator';
 import { showToast } from '@components/Toast';
 import { COLLECTION_NAME, PAGINATION_DEFAULT_TAKE, SORT_DIRECTIONS } from '@constants/global.constants';
 import firebase from '../../Firebase';
@@ -17,11 +15,9 @@ export const itemsFirstBatch = async () => {
       songs.push(doc.data());
       lastKey = doc.data().snippet.position;
     });
-    // const songs = jsonData;
-    // const lastKey = 49;
     return { songs, lastKey };
   } catch (e) {
-    console.log(e);
+    showToast(e.message, 'error');
   }
 };
 
@@ -41,12 +37,9 @@ export const itemsNextBatch = async (key) => {
       songs.push(doc.data());
       lastKey = doc.data().snippet.position;
     });
-    // console.log(key);
-    // const songs = jsonData;
-    // const lastKey = 0;
     return { songs, lastKey };
   } catch (e) {
-    console.log(e);
+    showToast(e.message, 'error');
   }
 };
 
@@ -64,7 +57,7 @@ export const getDetails = async (id) => {
     });
 
     return song;
-  } catch (e: any) {
+  } catch (e) {
     showToast(e.message, 'error');
   }
 };

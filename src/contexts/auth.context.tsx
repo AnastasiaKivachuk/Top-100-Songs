@@ -17,7 +17,7 @@ const authUserContext = createContext({
   signInWithEmailAndPassword: async () => {},
   createUserWithEmailAndPassword: async () => {},
   signOut: async () => {},
-  sendPasswordResetEmail: async (email: string) => {},
+  sendPasswordResetEmail: async (_val: string) => {},
 });
 
 export function AuthenticationWrapper({ children }) {
@@ -25,17 +25,15 @@ export function AuthenticationWrapper({ children }) {
   const [isMount, setMount] = useState(false);
   const router = useRouter();
   const [loadingLocal, setLoading] = useState(false);
-  const user = useSelector((state: StoreDTO) => state.user.user);
-  console.log(user, 'aaaaaaaaa');
+  const user = useSelector((state: StoreDTO) => state.userReducer?.user);
+
   useEffect(() => {
     (async () => {
       setLoading(true);
       if (user === null && PATHS_WITH_AUTH.includes(router.pathname)) {
-        console.log('PATH_SIGN_IN');
         await router.push(PATH_SIGN_IN);
       }
       if (user && NON_AUTH_PATHS.includes(router.pathname)) {
-        console.log('PATH_INDEX');
         await router.push(PATH_INDEX);
       }
       setLoading(false);
@@ -49,7 +47,6 @@ export function AuthenticationWrapper({ children }) {
   if (user === null && PATHS_WITH_AUTH.includes(router.pathname) && isMount) {
     router.push(PATH_SIGN_IN);
   }
-
   if (user === undefined || loadingLocal || auth.loading) {
     return <CircularProgress className={styles.loader} />;
   }

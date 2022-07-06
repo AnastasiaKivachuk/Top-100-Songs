@@ -13,14 +13,19 @@ import {
 } from '@constants/toast.constants';
 import styles from './toast.module.scss';
 
-export const showToast = (message: string,
-  type: 'info' | 'success' | 'warning' | 'error' | 'default' | undefined, description?: string, position?: string,
-  handleAction?: () => void, handleClose?: () => void): void => {
+export const showToast = (
+  message: string,
+  type: 'info' | 'success' | 'warning' | 'error' | 'default' | undefined,
+  description?: string,
+  position?: string,
+  handleAction?: () => void,
+  handleClose?: () => void,
+): void => {
 
   let bool = false;
   const options: ToastOptions = {
     position: position as ToastPosition || TOAST_POSITIONS.BOTTOM_RIGHT as ToastPosition,
-    autoClose: 3500,
+    autoClose: 13500,
     hideProgressBar: true,
     closeOnClick: true,
     pauseOnHover: true,

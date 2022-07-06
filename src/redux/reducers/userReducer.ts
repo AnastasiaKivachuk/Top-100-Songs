@@ -5,7 +5,7 @@ const initialState = {
 };
 
 // eslint-disable-next-line default-param-last
-const user = (state = initialState, { type, payload }) => {
+const userReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case SET_USER:
       return {
@@ -17,4 +17,4 @@ const user = (state = initialState, { type, payload }) => {
   }
 };
 
-export default user;
+export default userReducer;

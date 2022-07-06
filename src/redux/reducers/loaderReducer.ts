@@ -5,7 +5,7 @@ const initialState = {
 };
 
 // eslint-disable-next-line default-param-last
-const loader = (state = initialState, { type, payload }) => {
+const loaderReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case SET_LOADING_DATA:
       return {
@@ -16,4 +16,4 @@ const loader = (state = initialState, { type, payload }) => {
   }
 };
 
-export default loader;
+export default loaderReducer;
