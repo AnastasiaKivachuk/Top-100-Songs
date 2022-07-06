@@ -1,9 +1,5 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
 import React from 'react';
-import {
-  fireEvent, render, RenderResult, screen,
-} from '@testing-library/react';
+import { fireEvent, render, RenderResult, screen } from '@testing-library/react';
 
 import { PATH_SIGN_IN } from '@constants/routes.constants';
 import { getLocalStorageItem, removeLocalStorageItem, setLocalStorageItem } from '@helpers/localStorage.helpers';
@@ -12,7 +8,7 @@ import SignInSignUp from './index';
 
 const request = jest.fn();
 
-const renderComponent = (props: {} | {
+const renderComponent = (props: | {
   title?: string
   addedLink?: { text: string, link: string },
   isSignIn?: boolean
@@ -45,17 +41,17 @@ describe('SignInSignUp Component with default props', () => {
   it('onValueChange should change value in email field', () => {
     const value = 'a@gmail.com';
     const inputEl = screen.getByPlaceholderText('example.email@gmail.com');
-    expect(inputEl.value).toBe('');
+    expect((inputEl as HTMLInputElement).value).toBe('');
     fireEvent.change(inputEl, { target: { value }, name: 'email' });
-    expect(inputEl.value).toBe(value);
+    expect((inputEl as HTMLInputElement).value).toBe(value);
   });
 
   it('onChecked should change value in checkbox', () => {
     const value = true;
     const checkboxEl = screen.getByRole('checkbox');
-    expect(checkboxEl.value).toBe('false');
+    expect((checkboxEl as HTMLInputElement).value).toBe('false');
     fireEvent.click(checkboxEl);
-    expect(checkboxEl.checked).toBe(value);
+    expect((checkboxEl as HTMLInputElement).checked).toBe(value);
   });
 
   it('check onSubmit with no remember userReducer', async () => {
@@ -106,8 +102,8 @@ describe('SignInSignUp Component init', () => {
   it('check init ', () => {
     const inputElEmail = screen.getByPlaceholderText('example.email@gmail.com');
     const inputElPassword = screen.getByPlaceholderText('******');
-    expect(inputElEmail.value).toBe(email || '');
-    expect(inputElPassword.value).toBe(password || '');
+    expect((inputElEmail as HTMLInputElement).value).toBe(email || '');
+    expect((inputElPassword as HTMLInputElement).value).toBe(password || '');
   });
 });
 

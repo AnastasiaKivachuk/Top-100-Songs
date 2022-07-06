@@ -1,10 +1,7 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
 import React from 'react';
-import {
-  act, render, RenderResult, screen,
-} from '@testing-library/react';
+import { act, render, RenderResult, screen } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
+import { NextRouter } from 'next/router';
 
 import { PATH_INDEX, PATH_SIGN_IN } from '@constants/routes.constants';
 import { AuthenticationWrapper } from '@contexts/auth.context';
@@ -28,7 +25,11 @@ const routerMock = {
 };
 
 const renderComponent = (store): RenderResult => render(
-  <Provider store={store}><RouterContext.Provider value={routerMock}><AuthenticationWrapper /></RouterContext.Provider></Provider>,
+  <Provider store={store}>
+    <RouterContext.Provider value={routerMock as unknown as NextRouter}>
+      <AuthenticationWrapper><div /></AuthenticationWrapper>
+    </RouterContext.Provider>
+  </Provider>,
 );
 
 describe('authContext without user', () => {
@@ -61,7 +62,7 @@ const routerMockSignIn = {
 
 const renderComponentWithUser = (store): RenderResult => render(
   <Provider store={store}>
-    <RouterContext.Provider value={routerMockSignIn}>
+    <RouterContext.Provider value={routerMockSignIn as unknown as NextRouter}>
       <AuthenticationWrapper>
         <div>Test</div>
       </AuthenticationWrapper>

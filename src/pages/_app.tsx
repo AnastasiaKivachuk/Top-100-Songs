@@ -1,17 +1,17 @@
 import React from 'react';
-import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import type { AppProps } from 'next/app';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { CssBaseline, ThemeProvider } from '@mui/material';
 
 import { AuthenticationWrapper } from '@contexts/auth.context';
-import '@assets/scss/global.scss';
 import Layout from '@containers/Layout';
 import { Provider } from 'react-redux';
 import store from '@redux/store';
 import ErrorPage from '@components/ErrorPage';
 import { theme } from '@helpers/setupTheme';
+import '@assets/scss/global.scss';
 
 function MyApp({
   Component,

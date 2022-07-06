@@ -1,12 +1,9 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
 import React from 'react';
-import {
-  render, RenderResult, screen,
-} from '@testing-library/react';
+import { render, RenderResult, screen } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
-import { mockTopSongsStore } from '@containers/Home/mockStore';
+
+import { mockTopSongsStore } from './mockStore';
 import Home from './index';
 
 const initialState = { songsReducer: { topSongs: mockTopSongsStore, lastKey: 1 } };

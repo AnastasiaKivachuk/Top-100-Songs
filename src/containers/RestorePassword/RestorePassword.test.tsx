@@ -1,5 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
 import React from 'react';
 import {
   fireEvent, render, RenderResult, screen,
@@ -28,7 +26,6 @@ const renderComponent = (): RenderResult => render(
 describe('Restore Password Component', () => {
   beforeEach(() => {
     renderComponent();
-    // eslint-disable-next-line @typescript-eslint/no-var-requires,global-require
     const useRouter = jest.spyOn(require('next/router'), 'useRouter');
     useRouter.mockImplementation(() => ({
       route: PATH_SONG,
@@ -52,9 +49,9 @@ describe('Restore Password Component', () => {
   it('onValueChange should change value in email field', () => {
     const value = 'a@gmail.com';
     const inputEl = screen.getByPlaceholderText('example.email@gmail.com');
-    expect(inputEl.value).toBe('');
+    expect((inputEl as HTMLInputElement).value).toBe('');
     fireEvent.change(inputEl, { target: { value }, name: 'email' });
-    expect(inputEl.value).toBe(value);
+    expect((inputEl as HTMLInputElement).value).toBe(value);
   });
 
   it('check onSubmit ', async () => {

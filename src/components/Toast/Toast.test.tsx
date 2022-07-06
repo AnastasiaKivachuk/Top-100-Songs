@@ -1,6 +1,7 @@
 import { render, RenderResult, screen } from '@testing-library/react';
 import React from 'react';
 import { ToastContainer } from 'react-toastify';
+
 import { showToast } from './index';
 
 const renderComponent = (): RenderResult => render(<ToastContainer

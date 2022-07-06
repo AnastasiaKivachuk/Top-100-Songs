@@ -1,6 +1,4 @@
-import {
-  put, call, takeLatest, select,
-} from 'redux-saga/effects';
+import { put, call, takeLatest, select } from 'redux-saga/effects';
 
 import { itemsFirstBatch, itemsNextBatch } from '@services/songs.service';
 import { PATH_INDEX } from '@constants/routes.constants';

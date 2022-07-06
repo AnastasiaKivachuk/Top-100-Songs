@@ -14,7 +14,7 @@ export const columns: GridColDef[] = [
     headerName: 'Position',
     sortable: false,
     flex: 0.5,
-    valueGetter: (params: GridValueGetterParams) => params.row.snippet.position + 1,
+    valueGetter: (params: GridValueGetterParams) => params.row.snippet.position as number + 1,
   },
   {
     field: 'title',

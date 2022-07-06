@@ -1,5 +1,7 @@
 import { toast, ToastOptions, ToastPosition } from 'react-toastify';
 import React from 'react';
+import cn from 'classnames';
+
 import {
   AttentionToastrIcon,
   CloseToastrIcon,
@@ -7,7 +9,6 @@ import {
   InfoToastrIcon,
   SuccessToastrIcon,
 } from '@constants/icons.constants';
-import cn from 'classnames';
 import {
   TOAST_ERROR, TOAST_INFO, TOAST_POSITIONS, TOAST_SUCCESS, TOAST_WARNING,
 } from '@constants/toast.constants';

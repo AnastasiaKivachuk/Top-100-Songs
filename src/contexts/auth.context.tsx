@@ -1,13 +1,10 @@
-import React, {
-  createContext, useContext, useEffect, useState,
-} from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
 
-import {
-  NON_AUTH_PATHS, PATH_INDEX, PATH_SIGN_IN, PATHS_WITH_AUTH,
-} from '@constants/routes.constants';
 import { CircularProgress } from '@mui/material';
+
+import { NON_AUTH_PATHS, PATH_INDEX, PATH_SIGN_IN, PATHS_WITH_AUTH } from '@constants/routes.constants';
 import { StoreDTO } from '@dtos/store.dtos';
 import useFirebaseAuth from '@hooks/auth.hooks';
 import styles from './styles.module.scss';
@@ -17,7 +14,7 @@ const authUserContext = createContext({
   signInWithEmailAndPassword: async () => {},
   createUserWithEmailAndPassword: async () => {},
   signOut: async () => {},
-  sendPasswordResetEmail: async (_val: string) => {},
+  sendPasswordResetEmail: async () => {},
 });
 
 export function AuthenticationWrapper({ children }) {

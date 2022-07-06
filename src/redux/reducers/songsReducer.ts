@@ -5,7 +5,6 @@ const initialState = {
   lastKey: 0,
 };
 
-// eslint-disable-next-line default-param-last
 const songsReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case SET_TOP_SONGS:

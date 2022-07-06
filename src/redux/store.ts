@@ -3,6 +3,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { initialRouterState } from 'connected-next-router';
 import { Router } from 'next/router';
+
 import reducer from './reducers';
 import rootSaga from './sagas';
 

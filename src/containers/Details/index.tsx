@@ -1,6 +1,4 @@
-import React, {
-  memo, useEffect, useMemo, useState,
-} from 'react';
+import React, { memo, useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
 import ReactPlayer from 'react-player/youtube';
 import { useSelector } from 'react-redux';
