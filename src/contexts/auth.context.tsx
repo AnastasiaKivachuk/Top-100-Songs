@@ -11,10 +11,10 @@ import styles from './styles.module.scss';
 
 const authUserContext = createContext({
   loading: true,
-  signInWithEmailAndPassword: async () => {},
-  createUserWithEmailAndPassword: async () => {},
+  signInWithEmailAndPassword: async (email: string, password: string) => {},
+  createUserWithEmailAndPassword: async (email: string, password: string) => {},
   signOut: async () => {},
-  sendPasswordResetEmail: async () => {},
+  sendPasswordResetEmail: async (email: string) => {},
 });
 
 export function AuthenticationWrapper({ children }) {
@@ -48,8 +48,6 @@ export function AuthenticationWrapper({ children }) {
     return <CircularProgress className={styles.loader} />;
   }
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
   return <authUserContext.Provider value={auth}>{children}</authUserContext.Provider>;
 }
 
