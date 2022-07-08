@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from 'next/router';
-import { ChangeEventHandler } from 'react';
+import { ChangeEventHandler, useState } from 'react';
 
 import Avatar from '@mui/material/Avatar';
 import TextField from '@mui/material/TextField';
@@ -17,10 +17,11 @@ import { showToast } from '@components/Toast';
 import { PATH_SIGN_IN } from '@constants/routes.constants';
 import { FIELD_NAMES, schema } from '@containers/RestorePassword/validation';
 import { useAuth } from '@contexts/auth.context';
+import Link from 'next/link';
 import styles from './styles.module.scss';
 
 function RestorePassword(): JSX.Element {
-
+  const [requestError, setRequestError] = useState('');
   const router = useRouter();
   const { sendPasswordResetEmail } = useAuth();
 
@@ -40,7 +41,8 @@ function RestorePassword(): JSX.Element {
       showToast('Email is send', 'success');
       await router.push(PATH_SIGN_IN);
     } catch (error) {
-      showToast(`${(error as Error).message}. Please, try again`, 'error');
+      showToast('Email is send', 'success');
+      setRequestError((error as Error)?.message);
     }
   };
 
@@ -97,6 +99,7 @@ function RestorePassword(): JSX.Element {
                 </div>
               )}
             />
+            {requestError && <div className={styles.requestError} data-testid="requestError">{requestError}</div>}
             <LoadingButton
               type="submit"
               fullWidth
@@ -105,10 +108,18 @@ function RestorePassword(): JSX.Element {
               loading={isSubmitting}
               data-testid="btn"
               onClick={handleSubmit(onSubmit)}
+              className={styles.btn}
             >
               Restore password
             </LoadingButton>
           </Box>
+          <Grid container>
+            <Grid item xs>
+              <Link href={PATH_SIGN_IN}>
+                Go to the &lsquo;Sign In&lsquo; page
+              </Link>
+            </Grid>
+          </Grid>
         </Box>
       </Grid>
     </Grid>

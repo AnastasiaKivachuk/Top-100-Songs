@@ -1,5 +1,5 @@
 import React from 'react';
-import { act, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 
@@ -77,6 +77,16 @@ describe('Details Component with query', () => {
     });
     const text = await screen.findByText('1. Harry Styles - As It Was (Official Video)');
     expect(text).toBeInTheDocument();
+  });
+
+  it('click on show more Details', async () => {
+    act(() => {
+      render(<Provider store={store}><Details /></Provider>);
+    });
+    const btn = await screen.findByTestId('btn');
+    expect(btn).toHaveTextContent('Read more');
+    fireEvent.click(btn);
+    expect(btn).toHaveTextContent('Show less');
   });
 
 });

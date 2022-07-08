@@ -1,22 +1,9 @@
 @import '../../assets/scss/helpers/typography';
 
-.wrap {
-  background-color: $secondaryDarkBackground;
-  min-height: 100vh;
-}
-
-.body {
-  min-height: calc(100vh - 64px);
-}
-
-.contentWrap {
-  padding: 32px;
-}
-
 .container {
   align-items: center;
   display: flex;
   flex-direction: column;
-  max-width: 100%;
-  padding: 60px 0 0;
+  max-width: 100% !important;
+  padding: 60px 0 0 !important;
 }

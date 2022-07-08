@@ -5,11 +5,33 @@
 }
 
 .title {
+  @include title;
   align-items: center;
+  color: $white;
   display: flex;
   gap: 5px;
 }
 
 .signOut {
   cursor: pointer;
+}
+
+.email {
+  @include body-s;
+  color: $white;
+  margin-left: 10px;
+}
+
+.wrapEmail {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+}
+
+.wrapMenuItem {
+  align-items: center;
+  color: $darkGray;
+  display: flex;
+  gap: 5px;
+  justify-content: left;
 }

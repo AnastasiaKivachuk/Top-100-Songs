@@ -1,47 +1,39 @@
 import React from 'react';
-import { act, render, screen } from '@testing-library/react';
-import { Provider } from 'react-redux';
-import configureStore from 'redux-mock-store';
+import { fireEvent, render, screen } from '@testing-library/react';
 
-import Menu from './index';
+import PersonIcon from '@mui/icons-material/Person';
+import AppBar from './index';
 
-const middlewares = [];
-const mockStore = configureStore(middlewares);
+const menuItems = [
+  {
+    name: 'Profile',
+    onClick: () => null,
+    icon: <PersonIcon />,
+  },
+];
 
-describe('Menu with fulfilled store', () => {
-  const initialState = {
-    userReducer: {
-      user: {
-        uid: 'hO2373wBziZ58lEJolZMYTq1GRA2',
-        email: 'anastasiya.kivachuk@itrexgroup.com',
-      },
-    },
-  };
-  const store = mockStore(initialState);
-  it('should display Menu header with user', async () => {
-    act(() => {
-      render(<Provider store={store}><Menu /></Provider>);
-    });
-    const topText = await screen.findByRole('link');
+describe('AppBar with fulfilled props', () => {
+  const email = 'example@example.com';
+  beforeEach(() => render(<AppBar email={email} menuItems={menuItems} />));
+
+  it('should display AppBar header with user', async () => {
+    const topText = await screen.findByTestId('link');
     expect(topText).toBeInTheDocument();
-    expect(screen.getByText('Hi, anastasiya.kivachuk@itrexgroup.com!')).toBeInTheDocument();
-    expect(screen.queryByText('Sign out')).toBeTruthy();
+    expect(screen.getByText(email)).toBeInTheDocument();
+    expect(screen.queryByTestId('avatar')).toBeTruthy();
+  });
+
+  it('should display menu by click and hide by second click', () => {
+    const avatar = screen.queryByTestId('avatar');
+    fireEvent.click(avatar);
+    const menu = screen.queryByTestId('menu');
+    expect(menu).toBeInTheDocument();
   });
 });
 
-describe('Menu with empty store', () => {
-  const initialState = {
-    userReducer: {
-      user: null,
-    },
-  };
-  const store = mockStore(initialState);
-  it('should display Menu header without user', async () => {
-    act(() => {
-      render(<Provider store={store}><Menu /></Provider>);
-    });
-    const topText = await screen.findByRole('link');
-    expect(topText).toBeInTheDocument();
+describe('AppBar with empty props', () => {
+  beforeEach(() => render(<AppBar menuItems={menuItems} email="" />));
+  it('should display Menu header without user', () => {
     expect(screen.queryByText('Sign out')).toBeFalsy();
   });
 });

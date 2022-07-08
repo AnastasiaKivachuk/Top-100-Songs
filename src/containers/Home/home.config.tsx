@@ -7,13 +7,16 @@ import Button from '@mui/material/Button';
 import Link from 'next/link';
 import { DATE_FORMAT } from '@constants/global.constants';
 import { PATH_SONG, YOUTUBE_CHANEL_PATH, YOUTUBE_VIDEO_PATH } from '@constants/routes.constants';
+import styles from './styles.module.scss';
 
 export const columns: GridColDef[] = [
   {
     field: 'position',
     headerName: 'Position',
+    headerAlign: 'center',
     sortable: false,
-    flex: 0.5,
+    minWidth: 90,
+    align: 'center',
     valueGetter: (params: GridValueGetterParams) => params.row.snippet.position as number + 1,
   },
   {
@@ -35,10 +38,13 @@ export const columns: GridColDef[] = [
     field: 'snippet.publishedAt',
     headerName: 'Published Date',
     flex: 1,
+    align: 'center',
+    headerAlign: 'center',
     valueGetter: (params: GridValueGetterParams) => getDateWithFormat(params.row.snippet.publishedAt, DATE_FORMAT.DATE_WORD),
   },
   {
     field: 'channel',
+    sortable: false,
     headerName: 'Channel',
     renderCell: (params: GridValueGetterParams) => (
       <a href={YOUTUBE_CHANEL_PATH.replace('[id]', params.row.snippet.videoOwnerChannelId as string)} target="_blank" rel="noreferrer">
@@ -49,25 +55,29 @@ export const columns: GridColDef[] = [
   },
   {
     field: 'thumbnail',
+    sortable: false,
     headerName: 'Thumbnail',
+    align: 'center',
+    headerAlign: 'center',
     renderCell: (params: GridValueGetterParams) => (
       <img
         src={params.row.snippet.thumbnails.default.url}
         width={params.row.snippet.thumbnails.default.width}
         height={params.row.snippet.thumbnails.default.height}
+        className={styles.img}
         alt={params.row.snippet.title}
       />
     ),
     flex: 1.2,
     minWidth: 130,
-    align: 'center',
   },
   {
     field: 'button',
-    headerName: '',
+    headerName: 'Actions',
+    headerAlign: 'center',
     renderCell: (params: GridValueGetterParams) => (
       <Link href={PATH_SONG.replace('[id]', params.row.id)}>
-        <Button variant="outlined">
+        <Button variant="outlined" size="small" className={styles.button}>
           Show Details
         </Button>
       </Link>

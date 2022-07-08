@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { setUser } from '@redux/actions/actionCreator';
-import firebase from '../../Firebase';
+import firebase from '../../firebase.config';
 
 const formatAuthUser = (user) => ({
   uid: user.uid,

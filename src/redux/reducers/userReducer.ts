@@ -1,7 +1,7 @@
 import { SET_USER } from '../constants';
 
 const initialState = {
-  user: undefined,
+  user: null,
 };
 
 const userReducer = (state = initialState, { type, payload }) => {

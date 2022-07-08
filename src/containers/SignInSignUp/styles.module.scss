@@ -1,13 +1,29 @@
 @import '../../assets/scss/helpers/variables';
+@import '../../assets/scss/helpers/typography';
 
 .error {
-  color: $systemRedLight;
+  @include body-s;
+  bottom: -10px;
+  color: $red;
+  padding: 0 14px;
+  position: absolute;
+}
+
+.requestError {
+  @include body-s;
+  color: $red;
+  line-height: 14px;
+  margin-right: 32px;
+  max-width: 100%;
+  position: absolute;
 }
 
 .wrapInput {
   display: flex;
   flex-direction: column;
   gap: 5px;
+  margin: 16px;
+  position: relative;
   width: 100%;
 }
 
@@ -15,3 +31,13 @@
   width: 100%;
 }
 
+.img {
+  background-image: url('/images/plate.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.btn {
+  margin: 32px 0 24px;
+}

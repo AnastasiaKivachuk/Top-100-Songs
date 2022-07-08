@@ -46,6 +46,6 @@ export function* watchSagaUser() {
 }
 
 export default function* rootSaga() {
-  yield watchSagaUser();
+  // yield watchSagaUser();
   yield takeLatest(SET_USER, watchSaga);
 }

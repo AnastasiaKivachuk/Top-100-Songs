@@ -1,25 +1,35 @@
 @import '../../assets/scss/helpers/typography';
 
 .title {
-  color: $darkBackgroundTertiary;
-  max-width: 1100px;
+  @include h1;
+  color: $bronze;
   text-align: center;
 }
 
-.body {
-  min-height: calc(100vh - 64px);
-}
-
-.contentWrap {
-  padding: 32px;
+.details {
+  @include body-m;
+  margin: 16px;
+  text-align: center;
 }
 
 .container {
+  height: calc(100vh - 60px);
   padding: 60px 15px;
+  overflow: auto;
+  width: 100%;
+  &::-webkit-scrollbar {
+    width: 6px;
+    background-color: $ashen;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $gray;
+    border-radius: 3px;
+  }
 }
 
 .noData {
-  color: $opaqueDarkSeparator;
+  color: $gray;
   padding-top: 30px;
   text-align: center;
 }
@@ -33,4 +43,67 @@
 .tableWrap {
   padding-top: 20px;
   width: 100%;
+
+  .table {
+    :global {
+
+      .MuiDataGrid-cell:focus-within {
+        outline: none;
+      }
+
+      .MuiDataGrid-columnSeparator {
+        display: none;
+      }
+
+      .MuiDataGrid-row {
+        background: $white;
+
+        &:not(:last-child) {
+          .MuiDataGrid-cell {
+            border-bottom: 4px solid $lightGray;
+          }
+        }
+      }
+
+      .MuiDataGrid-cell {
+        @include body-s;
+
+        a {
+          @include body-s;
+          align-items: center;
+          color: $systemBlueDark;
+          display: flex;
+          height: 100%;
+          width: 100%;
+        }
+      }
+
+      .MuiDataGrid-columnHeaders {
+        background: rgba($bronze, 0.5);
+
+        .MuiDataGrid-columnHeader:focus {
+          outline: none;
+        }
+
+        .MuiDataGrid-columnHeaderTitleContainer {
+          @include body-m;
+        }
+      }
+    }
+
+
+  }
+}
+
+.img {
+  max-height: 52px;
+  object-fit: cover;
+}
+
+.button {
+  @include body-s;
+  border: 1px solid $systemBlueDark;
+  color: $systemBlueDark;
+  font-family: 'Gotham' !important;
+  text-transform: none;
 }

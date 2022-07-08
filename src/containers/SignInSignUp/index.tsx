@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from 'next/router';
-import { ChangeEventHandler, useEffect } from 'react';
+import { ChangeEventHandler, useEffect, useState } from 'react';
 import Link from 'next/link';
 
 import Avatar from '@mui/material/Avatar';
@@ -32,7 +32,7 @@ type Props = {
 function SignInSignUp({
   title, addedLink, isSignIn, request,
 }: Props): JSX.Element {
-
+  const [requestError, setRequestError] = useState('');
   const router = useRouter();
 
   const {
@@ -69,7 +69,7 @@ function SignInSignUp({
       if (!isSignIn) { showToast('Success. Profile is created', 'success'); }
       await router.push(PATH_INDEX);
     } catch (error) {
-      showToast((error as Error).message, 'error');
+      setRequestError((error as Error).message);
     }
   };
 
@@ -89,13 +89,7 @@ function SignInSignUp({
         xs={false}
         sm={4}
         md={7}
-        sx={{
-          backgroundImage: 'url(https://source.unsplash.com/random)',
-          backgroundRepeat: 'no-repeat',
-          backgroundColor: (t) => (t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900]),
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
+        className={styles.img}
       />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <Box
@@ -172,6 +166,7 @@ function SignInSignUp({
                 />
               )}
             />
+            {requestError && <div className={styles.requestError} data-testid="requestError">{requestError}</div>}
             <LoadingButton
               type="submit"
               fullWidth
@@ -179,6 +174,7 @@ function SignInSignUp({
               sx={{ mt: 3, mb: 2 }}
               loading={isSubmitting}
               data-testid="btn"
+              className={styles.btn}
             >
               {title}
             </LoadingButton>

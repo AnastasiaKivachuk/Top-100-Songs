@@ -3,7 +3,6 @@ import { fireEvent, render, RenderResult, screen } from '@testing-library/react'
 
 import { PATH_SIGN_IN } from '@constants/routes.constants';
 import { getLocalStorageItem, removeLocalStorageItem, setLocalStorageItem } from '@helpers/localStorage.helpers';
-import { ToastContainer } from 'react-toastify';
 import SignInSignUp from './index';
 
 const request = jest.fn();
@@ -13,19 +12,7 @@ const renderComponent = (props: | {
   addedLink?: { text: string, link: string },
   isSignIn?: boolean
 }): RenderResult => render(
-  <><SignInSignUp request={request} {...props} />
-    <ToastContainer
-      position="top-right"
-      autoClose={3500}
-      hideProgressBar
-      newestOnTop={false}
-      closeOnClick
-      rtl={false}
-      pauseOnFocusLoss={false}
-      draggable
-      pauseOnHover
-    />
-  </>,
+  <SignInSignUp request={request} {...props} />,
 );
 
 describe('SignInSignUp Component with default props', () => {
@@ -63,7 +50,7 @@ describe('SignInSignUp Component with default props', () => {
     fireEvent.change(inputElPassword, { target: { value: password }, name: 'password' });
     const btn = screen.getByTestId('btn');
     fireEvent.click(btn);
-    const alert = await screen.findByRole('alert');
+    const alert = await screen.findByTestId('requestError');
     expect(alert).toBeInTheDocument();
     const res = getLocalStorageItem('userData');
     expect(res).toBe(null);
@@ -81,7 +68,7 @@ describe('SignInSignUp Component with default props', () => {
     const btn = screen.getByTestId('btn');
     fireEvent.click(btn);
 
-    const alert = await screen.findByRole('alert');
+    const alert = await screen.findByTestId('requestError');
     expect(alert).toBeInTheDocument();
 
     const res = getLocalStorageItem('userData');

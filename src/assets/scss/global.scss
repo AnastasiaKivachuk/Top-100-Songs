@@ -39,7 +39,7 @@ p {
 }
 
 body {
-  background-color: $secondaryDarkLabel;
+  background-color: $lightGray;
 
   h1 {
     @include h1;
@@ -51,10 +51,6 @@ body {
 
   h3 {
     @include h3;
-  }
-
-  h4 {
-    @include h4;
   }
 
   a {

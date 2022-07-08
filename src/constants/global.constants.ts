@@ -3,7 +3,7 @@ export enum DATE_FORMAT {
   DATE_WORD = 'MMM DD, YYYY',
 }
 
-export const PAGINATION_DEFAULT_TAKE = 5;
+export const PAGINATION_DEFAULT_TAKE = 10;
 
 export const COLLECTION_NAME = 'items';
 
@@ -11,3 +11,5 @@ export enum SORT_DIRECTIONS {
   DESC = 'desc',
   ASC = 'asc',
 }
+
+export const MAX_LENGTH_TEXT = 500;

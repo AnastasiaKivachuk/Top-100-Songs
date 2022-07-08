@@ -1,6 +1,6 @@
 import { showToast } from '@components/Toast';
 import { COLLECTION_NAME, PAGINATION_DEFAULT_TAKE, SORT_DIRECTIONS } from '@constants/global.constants';
-import firebase from '../../Firebase';
+import firebase from '../../firebase.config';
 
 export const itemsFirstBatch = async () => {
   try {
