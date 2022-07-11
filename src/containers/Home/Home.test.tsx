@@ -30,15 +30,3 @@ describe('Home Component', () => {
   });
 
 });
-
-describe('Home Component with fulfilled store', () => {
-  const store = mockStore(initialState);
-  beforeEach(() => {
-    renderComponent(store);
-  });
-
-  it('should render button More songs', async () => {
-    const btn = await screen.findByText('More songs');
-    expect(btn).toBeInTheDocument();
-  });
-});

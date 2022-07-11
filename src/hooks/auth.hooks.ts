@@ -7,6 +7,8 @@ import firebase from '../../firebase.config';
 const formatAuthUser = (user) => ({
   uid: user.uid,
   email: user.email,
+  displayName: user?.displayName,
+  photoURL: user?.photoURL,
 });
 
 export default function useFirebaseAuth() {

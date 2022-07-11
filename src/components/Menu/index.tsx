@@ -15,9 +15,11 @@ import styles from './styles.module.scss';
 type Props = {
   email: string,
   menuItems: {name: string, icon: JSX.Element, onClick: () => void}[]
+  displayName: string
+  avatar: string
 }
 
-function AppBar({ email, menuItems }: Props): JSX.Element {
+function AppBar({ email, menuItems, displayName, avatar }: Props): JSX.Element {
   const [anchorElUser, setAnchorElUser] = React.useState<boolean>(false);
 
   const handleUserMenu = () => {
@@ -37,8 +39,11 @@ function AppBar({ email, menuItems }: Props): JSX.Element {
           {email && (
             <Box sx={{ flexGrow: 0 }}>
               <div className={styles.wrapEmail} onClick={handleUserMenu} role="presentation" data-testid="avatar">
-                <Avatar alt={email} src="/static/images/avatar/2.jpg" />
-                <p className={styles.email}>{email}</p>
+                <Avatar src={avatar || '/static/images/avatar/2.jpg'} />
+                <div>
+                  {displayName && <p className={styles.email}>{displayName}</p>}
+                  <p className={styles.email}>{email}</p>
+                </div>
               </div>
               <Menu
                 sx={{ mt: '45px' }}

@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
+import Profile from '@containers/Profile';
 
-const ProfilePage: FC = () => <div />;
+const ProfilePage: FC = () => <Profile />;
 
 export default ProfilePage;

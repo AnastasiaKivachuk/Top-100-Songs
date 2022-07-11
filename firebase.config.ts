@@ -1,4 +1,5 @@
 import firebase from 'firebase';
+import 'firebase/storage';
 
 export const firebaseCredentials = {
   apiKey: 'AIzaSyC95atwRNDVpwV7okfWcW6bg4XZ01MhK90',

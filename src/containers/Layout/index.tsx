@@ -35,7 +35,7 @@ function Layout({ children }: { children: JSX.Element }): JSX.Element {
   );
   return (
     <>
-      <AppBar email={authUser?.email} menuItems={menuItems} />
+      <AppBar email={authUser?.email} displayName={authUser?.displayName} avatar={authUser?.photoURL} menuItems={menuItems} />
       <Container className={styles.container}>{children}</Container>
     </>
   );

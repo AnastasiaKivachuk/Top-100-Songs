@@ -14,7 +14,7 @@ const menuItems = [
 
 describe('AppBar with fulfilled props', () => {
   const email = 'example@example.com';
-  beforeEach(() => render(<AppBar email={email} menuItems={menuItems} />));
+  beforeEach(() => render(<AppBar email={email} menuItems={menuItems} avatar="/images/500.svg" displayName="displayName" />));
 
   it('should display AppBar header with user', async () => {
     const topText = await screen.findByTestId('link');
@@ -32,7 +32,7 @@ describe('AppBar with fulfilled props', () => {
 });
 
 describe('AppBar with empty props', () => {
-  beforeEach(() => render(<AppBar menuItems={menuItems} email="" />));
+  beforeEach(() => render(<AppBar menuItems={menuItems} email="" avatar="" displayName="" />));
   it('should display Menu header without user', () => {
     expect(screen.queryByText('Sign out')).toBeFalsy();
   });
