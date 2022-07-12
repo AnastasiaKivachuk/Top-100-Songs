@@ -5,11 +5,11 @@ import {
 import { Provider } from 'react-redux';
 import { combineReducers, createStore } from 'redux';
 
-import HomePage from '@pages/index';
-import userReducer from '../redux/reducers/userReducer';
-import songsReducer from '../redux/reducers/songsReducer';
+import user from '@redux/reducers/user';
+import songs from '@redux/reducers/songs';
+import HomePage from '../pages';
 
-const store = createStore(combineReducers([userReducer, songsReducer]));
+const store = createStore(combineReducers([user, songs]));
 
 describe('HomePage', () => {
 

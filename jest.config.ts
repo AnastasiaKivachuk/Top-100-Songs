@@ -7,7 +7,7 @@ module.exports = {
   ],
   moduleDirectories: ['<rootDir>/node_modules', '<rootDir>/src'],
   coveragePathIgnorePatterns: [
-    '<rootDir>/src/pages/_app.tsx', '<rootDir>/src/pages/_document.js', '<rootDir>/src/dtos', '<rootDir>/src/constants',
+    '<rootDir>/pages/_app.tsx', '<rootDir>/pages/_document.js', '<rootDir>/src/interfaces', '<rootDir>/src/constants',
     '<rootDir>/src/validation', '<rootDir>/src/redux/store.ts', '<rootDir>/src/redux/actions', '<rootDir>/src/services',
     '<rootDir>/src/redux/reducers/index.ts',
   ],
@@ -15,7 +15,7 @@ module.exports = {
     '@src/(.*)': '<rootDir>/src/$1',
     '@constants/(.*)': '<rootDir>/src/constants/$1',
     '@contexts/(.*)': '<rootDir>/src/contexts/$1',
-    '@dtos/(.*)': '<rootDir>/src/dtos/$1',
+    '@dtos/(.*)': '<rootDir>/src/interfaces/$1',
     '@hooks/(.*)': '<rootDir>/src/hooks/$1',
     '@redux/(.*)': '<rootDir>/src/redux/$1',
     '@helpers/(.*)': '<rootDir>/src/helpers/$1',

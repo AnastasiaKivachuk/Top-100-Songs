@@ -9,7 +9,7 @@ import { AuthenticationWrapper } from '@contexts/auth.context';
 import Layout from '@containers/Layout';
 import { Provider } from 'react-redux';
 import store from '@redux/store';
-import ErrorPage from '@components/ErrorPage';
+import { ErrorPage } from '@components/ErrorPage';
 import { theme } from '@helpers/setupTheme';
 import '@assets/scss/global.scss';
 

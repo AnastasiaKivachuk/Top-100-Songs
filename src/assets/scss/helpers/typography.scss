@@ -1,4 +1,4 @@
-@import './variables';
+@import 'variables';
 
 @mixin typographyConfig($fontWeight, $fontSize, $lineHeight, $color) {
   color: $color;

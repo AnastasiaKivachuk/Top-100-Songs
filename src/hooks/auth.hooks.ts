@@ -1,7 +1,7 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useEffect, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { setUser } from '@redux/actions/actionCreator';
+import { setUser, setUserLoading } from '@redux/actions/actionCreator';
 import firebase from '../../firebase.config';
 
 const formatAuthUser = (user) => ({
@@ -12,25 +12,24 @@ const formatAuthUser = (user) => ({
 });
 
 export default function useFirebaseAuth() {
-  const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
   const authStateChanged = useCallback((authState) => {
     if (!authState) {
-      setLoading(false);
+      dispatch(setUser({ user: null }));
+      setUserLoading(false);
       return;
     }
 
-    setLoading(true);
+    setUserLoading(true);
     const formattedUser = formatAuthUser(authState);
-    dispatch(setUser(formattedUser));
-
-    setLoading(false);
+    dispatch(setUser({ user: formattedUser }));
+    setUserLoading(false);
 
   }, []);
 
   const clear = useCallback(() => {
-    dispatch(setUser(null));
-    setLoading(true);
+    dispatch(setUser({ user: null }));
+    setUserLoading(true);
   }, []);
 
   const signInWithEmailAndPassword = useCallback((email: string, password: string) => (
@@ -49,7 +48,6 @@ export default function useFirebaseAuth() {
   }, []);
 
   return {
-    loading,
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
     sendPasswordResetEmail,

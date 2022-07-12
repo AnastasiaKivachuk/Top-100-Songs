@@ -41,7 +41,7 @@ describe('SignInSignUp Component with default props', () => {
     expect((checkboxEl as HTMLInputElement).checked).toBe(value);
   });
 
-  it('check onSubmit with no remember userReducer', async () => {
+  it('check onSubmit with no remember user', async () => {
     const email = 'a@gmail.com';
     const password = 'qwerty123';
     const inputElEmail = screen.getByPlaceholderText('example.email@gmail.com');
@@ -56,7 +56,7 @@ describe('SignInSignUp Component with default props', () => {
     expect(res).toBe(null);
   });
 
-  it('check onSubmit with remember userReducer', async () => {
+  it('check onSubmit with remember user', async () => {
     const email = 'a@gmail.com';
     const password = 'qwerty123';
     const inputElEmail = screen.getByPlaceholderText('example.email@gmail.com');

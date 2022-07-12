@@ -10,7 +10,7 @@ import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
 
 import { PATH_INDEX } from '@constants/routes.constants';
-import styles from './styles.module.scss';
+import styles from './menu.module.scss';
 
 type Props = {
   email: string,

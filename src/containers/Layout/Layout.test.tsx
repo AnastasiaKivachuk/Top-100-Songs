@@ -10,7 +10,7 @@ const mockStore = configureStore(middlewares);
 
 describe('Layout Component', () => {
   const store = mockStore({
-    userReducer: {
+    user: {
       user: null,
     },
   });

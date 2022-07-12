@@ -20,13 +20,14 @@ import { FIELD_NAMES, schema } from '@containers/SignInSignUp/validation';
 import { getLocalStorageItem, removeLocalStorageItem, setLocalStorageItem } from '@helpers/localStorage.helpers';
 import { showToast } from '@components/Toast';
 import { PATH_INDEX, PATH_RESTORE_PASSWORD, PATH_SIGN_UP } from '@constants/routes.constants';
+import { TOAST_SUCCESS } from '@components/Toast/constants/toast.constants';
 import styles from './styles.module.scss';
 
 type Props = {
   title?: string
   addedLink?: { text: string, link: string },
   isSignIn?: boolean
-  request: (email: string, password: string) => any
+  request: (email: string, password: string) => Promise<any>
 }
 
 function SignInSignUp({
@@ -66,7 +67,7 @@ function SignInSignUp({
 
       await request(email, password);
 
-      if (!isSignIn) { showToast('Success. Profile is created', 'success'); }
+      if (!isSignIn) { showToast('Success. Profile is created', TOAST_SUCCESS); }
       await router.push(PATH_INDEX);
     } catch (error) {
       setRequestError((error as Error).message);

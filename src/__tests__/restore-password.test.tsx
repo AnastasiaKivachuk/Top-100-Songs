@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, RenderResult, screen } from '@testing-library/react';
 
-import RestorePasswordPage from '@pages/restore-password';
+import RestorePasswordPage from '../pages/restore-password';
 
 const renderComponent = (): RenderResult => render(<RestorePasswordPage />);
 

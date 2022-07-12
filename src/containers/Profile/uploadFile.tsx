@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
+import { UseFormSetError } from 'react-hook-form';
 
 import { CircularProgress } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
-import { UseFormSetError } from 'react-hook-form';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+
 import firebase from '../../../firebase.config';
+import styles from './uploadFile.module.scss';
 
 type Props={
   onFileUpload: (val: string) => void,
@@ -13,6 +16,7 @@ type Props={
 
 function UploadFile({ onFileUpload, value, name, setError }: Props) {
   const [loading, setLoading] = useState(false);
+  const inputElement = useRef();
 
   const handleFireBaseUpload = (event) => {
     const file = event.target.files[0];
@@ -27,29 +31,49 @@ function UploadFile({ onFileUpload, value, name, setError }: Props) {
       () => null,
       (err) => {
         setError(name, { message: err.message });
+        setLoading(false);
       },
       () => {
         storage?.ref('images')?.child(file.name).getDownloadURL()
           .then((fireBaseUrl) => {
             onFileUpload(fireBaseUrl);
           });
+        setLoading(false);
       },
     );
-    setLoading(false);
   };
 
+  // TODO fix type
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const handleClickOnAvatar = () => inputElement.current !== undefined && inputElement.current?.click();
+
   return (
-    <div>
-      <Avatar src={value || '/static/images/avatar/2.jpg'} />
-      <input
-        type="file"
-        onChange={handleFireBaseUpload}
-        accept="image/png, image/jpeg, image/jpg"
-        name={name}
-        data-testid="uploadInput"
-      />
-      {loading && <CircularProgress />}
-    </div>
+    <>
+      <div
+        className={styles.info}
+        onClick={handleClickOnAvatar}
+        role="presentation"
+      >Click to change avatar <ArrowDownwardIcon />
+      </div>
+      <div className={styles.wrapper}>
+        <Avatar
+          src={value || '/static/images/avatar/2.jpg'}
+          onClick={handleClickOnAvatar}
+          className={styles.avatar}
+        />
+        {loading && <div className={styles.loader}><CircularProgress /></div>}
+        <input
+          type="file"
+          onChange={handleFireBaseUpload}
+          accept="image/png, image/jpeg, image/jpg"
+          name={name}
+          data-testid="uploadInput"
+          ref={inputElement}
+          className={styles.input}
+        />
+      </div>
+    </>
   );
 }
 

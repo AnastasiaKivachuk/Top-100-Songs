@@ -6,15 +6,15 @@ import LogoutIcon from '@mui/icons-material/Logout';
 
 import { useAuth } from '@contexts/auth.context';
 import { useSelector } from 'react-redux';
-import { StoreDTO } from '@dtos/store.dtos';
-import AppBar from '@components/Menu';
+import { StoreDTO } from '@redux/interfaces/store.interface';
+import { AppBar } from '@components/Menu';
 import { useRouter } from 'next/router';
 import { PATH_PROFILE } from '@constants/routes.constants';
 import styles from './styles.module.scss';
 
 function Layout({ children }: { children: JSX.Element }): JSX.Element {
   const router = useRouter();
-  const authUser = useSelector((state: StoreDTO) => state.userReducer?.user);
+  const authUser = useSelector((state: StoreDTO) => state.user?.user);
   const { signOut } = useAuth();
 
   const menuItems = useMemo(

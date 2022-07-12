@@ -5,12 +5,11 @@ import { useSelector } from 'react-redux';
 import { CircularProgress } from '@mui/material';
 
 import { NON_AUTH_PATHS, PATH_INDEX, PATH_SIGN_IN, PATHS_WITH_AUTH } from '@constants/routes.constants';
-import { StoreDTO } from '@dtos/store.dtos';
+import { StoreDTO } from '@redux/interfaces/store.interface';
 import useFirebaseAuth from '@hooks/auth.hooks';
 import styles from './styles.module.scss';
 
 const authUserContext = createContext({
-  loading: true,
   signInWithEmailAndPassword: async (email: string, password: string) => {},
   createUserWithEmailAndPassword: async (email: string, password: string) => {},
   signOut: async () => {},
@@ -22,7 +21,9 @@ export function AuthenticationWrapper({ children }) {
   const [isMount, setMount] = useState(false);
   const router = useRouter();
   const [loadingLocal, setLoading] = useState(false);
-  const user = useSelector((state: StoreDTO) => state.userReducer?.user);
+  const user = useSelector((state: StoreDTO) => state.user?.user);
+  const isLoading = useSelector((state: StoreDTO) => state.user?.isLoading);
+  const isLoadingInitTopSongs = useSelector((state: StoreDTO) => state.songs?.isInitLoading);
 
   useEffect(() => {
     (async () => {
@@ -35,19 +36,22 @@ export function AuthenticationWrapper({ children }) {
       }
       setLoading(false);
     })();
-  }, [user]);
+  }, [user, isLoading]);
 
   useEffect(() => {
     setMount(true);
   }, []);
 
-  if (user === null && PATHS_WITH_AUTH.includes(router.pathname) && isMount) {
+  if (isLoading && user === undefined && PATHS_WITH_AUTH.includes(router.pathname) && isMount) {
     router.push(PATH_SIGN_IN);
   }
-  if (user === undefined || loadingLocal || auth.loading) {
+  if (isLoading || loadingLocal || isLoadingInitTopSongs) {
     return <CircularProgress className={styles.loader} />;
   }
 
+  // TODO fix ts-ignore
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   return <authUserContext.Provider value={auth}>{children}</authUserContext.Provider>;
 }
 

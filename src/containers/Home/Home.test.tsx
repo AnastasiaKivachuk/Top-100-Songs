@@ -3,10 +3,7 @@ import { render, RenderResult, screen } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 
-import { mockTopSongsStore } from './mockStore';
 import Home from './index';
-
-const initialState = { songsReducer: { topSongs: mockTopSongsStore, lastKey: 1 } };
 
 const middlewares = [];
 const mockStore = configureStore(middlewares);

@@ -5,7 +5,7 @@ import { CircularProgress, Typography } from '@mui/material';
 
 import { columns } from '@containers/Home/home.config';
 import { useDispatch, useSelector } from 'react-redux';
-import { StoreDTO } from '@dtos/store.dtos';
+import { StoreDTO } from '@redux/interfaces/store.interface';
 import { LOAD_MORE_SONGS } from '@redux/constants';
 import { CHILLAX_PATH, PLAYLIST_CHILLAX_PATH } from '@constants/routes.constants';
 import styles from './styles.module.scss';
@@ -13,8 +13,7 @@ import styles from './styles.module.scss';
 function Home(): JSX.Element {
   const dispatch = useDispatch();
 
-  const stateSongs = useSelector((state: StoreDTO) => state.songsReducer);
-  const isDataLoading = useSelector((state: StoreDTO) => state.loaderReducer?.isDataLoading);
+  const stateSongs = useSelector((state: StoreDTO) => state.songs);
 
   const fetchMorePosts = () => {
     if (stateSongs.lastKey > 0) {
@@ -43,7 +42,7 @@ function Home(): JSX.Element {
         {stateSongs?.topSongs?.length > 0
           ? (
             <DataGrid
-              rows={stateSongs?.topSongs || []}
+              rows={stateSongs.topSongs || []}
               columns={columns}
               rowsPerPageOptions={[]}
               hideFooterPagination
@@ -57,7 +56,7 @@ function Home(): JSX.Element {
             />
           )
           : <Typography variant="h4" textAlign="center" className={styles.noData}>No Data</Typography>}
-        {isDataLoading && (
+        {stateSongs?.isLoading && (
           <div className={styles.wrap}><CircularProgress /></div>
         ) }
       </div>

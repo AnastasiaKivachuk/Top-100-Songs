@@ -33,7 +33,7 @@ const renderComponent = (store): RenderResult => render(
 );
 
 describe('authContext without user', () => {
-  const store = mockStore({ userReducer: { user: null } });
+  const store = mockStore({ user: { user: null } });
 
   it('useEffect', async () => {
     act(() => {
@@ -71,7 +71,7 @@ const renderComponentWithUser = (store): RenderResult => render(
 );
 
 describe('authContext with user', () => {
-  const store = mockStore({ userReducer: { user: { email: 'a@gmail.com', uid: 'asdf' } } });
+  const store = mockStore({ user: { user: { email: 'a@gmail.com', uid: 'asdf' } } });
 
   it('useEffect', async () => {
     act(() => {

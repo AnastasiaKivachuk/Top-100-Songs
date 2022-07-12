@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Button } from '@mui/material';
 
 import { PATH_INDEX } from '@constants/routes.constants';
-import styles from './styles.module.scss';
+import styles from './errorPage.module.scss';
 
 interface Props {
   imageSrc?: string

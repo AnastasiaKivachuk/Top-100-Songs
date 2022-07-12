@@ -6,11 +6,11 @@ import {
 import { PATH_SONG } from '@constants/routes.constants';
 import { Provider } from 'react-redux';
 import { combineReducers, createStore } from 'redux';
-import DetailsPage from '@pages/songs/[id]';
-import userReducer from '../redux/reducers/userReducer';
-import songsReducer from '../redux/reducers/songsReducer';
+import user from '@redux/reducers/user';
+import songs from '@redux/reducers/songs';
+import DetailsPage from '../pages/songs/[id]';
 
-const store = createStore(combineReducers([userReducer, songsReducer]));
+const store = createStore(combineReducers([user, songs]));
 
 describe('DetailsPage', () => {
 

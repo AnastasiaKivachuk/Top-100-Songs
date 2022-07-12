@@ -11,7 +11,7 @@ import {
 } from '@constants/icons.constants';
 import {
   TOAST_ERROR, TOAST_INFO, TOAST_POSITIONS, TOAST_SUCCESS, TOAST_WARNING,
-} from '@constants/toast.constants';
+} from '@components/Toast/constants/toast.constants';
 import styles from './toast.module.scss';
 
 export const showToast = (

@@ -1,4 +1,4 @@
-import { UpdateUserDTO } from '@dtos/user.dtos';
+import { UpdateUserDTO } from '@interfaces/user.interfaces';
 import firebase from '../../firebase.config';
 
 export const itemsNextBatch = async (data: UpdateUserDTO) => {

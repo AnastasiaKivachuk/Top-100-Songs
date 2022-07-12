@@ -18,6 +18,7 @@ import { PATH_SIGN_IN } from '@constants/routes.constants';
 import { FIELD_NAMES, schema } from '@containers/RestorePassword/validation';
 import { useAuth } from '@contexts/auth.context';
 import Link from 'next/link';
+import { TOAST_SUCCESS } from '@components/Toast/constants/toast.constants';
 import styles from './styles.module.scss';
 
 function RestorePassword(): JSX.Element {
@@ -38,7 +39,7 @@ function RestorePassword(): JSX.Element {
     try {
       const { email } = data;
       await sendPasswordResetEmail(email);
-      showToast('Email is send', 'success');
+      showToast('Email is send', TOAST_SUCCESS);
       await router.push(PATH_SIGN_IN);
     } catch (error) {
       setRequestError((error as Error)?.message);

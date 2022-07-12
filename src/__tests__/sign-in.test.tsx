@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, RenderResult, screen } from '@testing-library/react';
 
-import SignInPage from '@pages/sign-in';
+import SignInPage from '../pages/sign-in';
 
 const renderComponent = (): RenderResult => render(<SignInPage />);
 

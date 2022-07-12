@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { CircularProgress, Typography } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
-import { SongDTO, StoreDTO } from '@dtos/store.dtos';
+import { SongDTO, StoreDTO } from '@redux/interfaces/store.interface';
 import { getDetails } from '@services/songs.service';
 import { YOUTUBE_CHANEL_PATH, YOUTUBE_VIDEO_PATH } from '@constants/routes.constants';
 import { getArrayText, getDateWithFormat, trimmedString } from '@helpers/functions.helpers';
@@ -19,7 +19,7 @@ function Details(): JSX.Element {
   const [isShowFullDescription, setFullDescription] = useState(false);
   const [details, setDetails] = useState<null | SongDTO>(null);
   const [loading, setLoading] = useState(false);
-  const topSongs = useSelector((state: StoreDTO) => state.songsReducer?.topSongs);
+  const topSongs = useSelector((state: StoreDTO) => state.songs?.topSongs);
 
   useEffect(() => {
     const detailsFromStore = topSongs?.find((item) => item.id === query.id);

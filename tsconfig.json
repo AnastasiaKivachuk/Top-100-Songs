@@ -25,17 +25,11 @@
       "@containers/*": [
         "./src/containers/*"
       ],
-      "@dtos/*": [
-        "./src/dtos/*"
-      ],
       "@helpers/*": [
         "./src/helpers/*"
       ],
       "@interfaces/*": [
         "./src/interfaces/*"
-      ],
-      "@models/*": [
-        "./src/models/*"
       ],
       "@pages/*": [
         "./src/pages/*"
@@ -66,6 +60,8 @@
       ]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/_document.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx",
+    "./src/pages/_document.js"
+  ],
   "exclude": ["node_modules"]
 }

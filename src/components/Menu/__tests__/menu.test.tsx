@@ -2,7 +2,7 @@ import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 
 import PersonIcon from '@mui/icons-material/Person';
-import AppBar from './index';
+import { AppBar } from '@components/Menu';
 
 const menuItems = [
   {

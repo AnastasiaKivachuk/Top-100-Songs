@@ -1,5 +1,6 @@
 import { showToast } from '@components/Toast';
 import { COLLECTION_NAME, PAGINATION_DEFAULT_TAKE, SORT_DIRECTIONS } from '@constants/global.constants';
+import { TOAST_ERROR } from '@components/Toast/constants/toast.constants';
 import firebase from '../../firebase.config';
 
 export const itemsFirstBatch = async () => {
@@ -17,7 +18,7 @@ export const itemsFirstBatch = async () => {
     });
     return { songs, lastKey };
   } catch (e) {
-    showToast(e.message, 'error');
+    showToast(e.message, TOAST_ERROR);
   }
 };
 
@@ -39,7 +40,7 @@ export const itemsNextBatch = async (key) => {
     });
     return { songs, lastKey };
   } catch (e) {
-    showToast(e.message, 'error');
+    showToast(e.message, TOAST_ERROR);
   }
 };
 
@@ -58,6 +59,6 @@ export const getDetails = async (id) => {
 
     return song;
   } catch (e) {
-    showToast(e.message, 'error');
+    showToast(e.message, TOAST_ERROR);
   }
 };

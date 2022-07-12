@@ -12,7 +12,7 @@ const mockStore = configureStore(middlewares);
 
 describe('Details Component with error', () => {
   const initialState = {
-    songsReducer: {
+    songs: {
       topSongs: null,
     },
   };
@@ -49,7 +49,7 @@ describe('Details Component with error', () => {
 
 describe('Details Component with query', () => {
   const initialState = {
-    songsReducer: {
+    songs: {
       topSongs: mockDetailsStore,
     },
   };

@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react';
 import { ThemeProvider } from '@mui/material';
 
 import { theme } from '@helpers/setupTheme';
-import ErrorPage from './index';
+import { ErrorPage } from '@components/ErrorPage';
 
 const MockErrorData = {
   imageSrc: '/images/500.svg',

@@ -1,4 +1,4 @@
-import { UserDTO } from '@dtos/user.dtos';
+import { UserDTO } from '@interfaces/user.interfaces';
 
 export interface SongDTO {
   'kind': string,
@@ -43,8 +43,6 @@ export interface SongDTO {
 }
 
 export interface StoreDTO {
-  userReducer: {user: UserDTO},
-  songsReducer: {topSongs: SongDTO[], lastKey: number},
-  errorsReducer: {error: string},
-  loaderReducer: {isDataLoading: boolean},
+  user: {user: UserDTO, isLoading: boolean},
+  songs: {topSongs: SongDTO[], lastKey: number, error: string, isLoading: boolean, isInitLoading: boolean },
 }

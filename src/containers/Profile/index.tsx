@@ -4,12 +4,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from 'next/router';
 import { ChangeEventHandler, useState } from 'react';
 
-import Avatar from '@mui/material/Avatar';
 import TextField from '@mui/material/TextField';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import LoadingButton from '@mui/lab/LoadingButton';
 
@@ -17,16 +15,19 @@ import { showToast } from '@components/Toast';
 import { PATH_INDEX } from '@constants/routes.constants';
 
 import { itemsNextBatch } from '@services/user.service';
-import { UpdateUserDTO } from '@dtos/user.dtos';
+import { UpdateUserDTO } from '@interfaces/user.interfaces';
 import UploadFile from '@containers/Profile/uploadFile';
-import { useSelector } from 'react-redux';
-import { StoreDTO } from '@dtos/store.dtos';
+import { useDispatch, useSelector } from 'react-redux';
+import { StoreDTO } from '@redux/interfaces/store.interface';
 import { Button } from '@mui/material';
+import { TOAST_SUCCESS } from '@components/Toast/constants/toast.constants';
+import { setUser } from '@redux/actions/actionCreator';
 import { FIELD_NAMES, schema } from './validation';
 import styles from './styles.module.scss';
 
 function Profile(): JSX.Element {
-  const authUser = useSelector((state: StoreDTO) => state.userReducer?.user);
+  const dispatch = useDispatch();
+  const authUser = useSelector((state: StoreDTO) => state.user?.user);
   const [requestError, setRequestError] = useState('');
   const router = useRouter();
 
@@ -43,7 +44,8 @@ function Profile(): JSX.Element {
   const onSubmit = async (data: UpdateUserDTO) => {
     try {
       await itemsNextBatch(data);
-      showToast('Profile is updated', 'success');
+      showToast('Profile is updated', TOAST_SUCCESS);
+      dispatch(setUser({ user: { ...authUser, ...data } }));
       await router.push(PATH_INDEX);
     } catch (error) {
       setRequestError((error as Error)?.message);

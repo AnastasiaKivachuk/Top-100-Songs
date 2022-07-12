@@ -1,15 +1,11 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'connected-next-router';
-import userReducer from '@redux/reducers/userReducer';
-import songsReducer from './songsReducer';
-import errorsReducer from './errorsReducer';
-import loaderReducer from './loaderReducer';
+import user from './user';
+import songs from './songs';
 
 const reducer = combineReducers({
-  userReducer,
-  songsReducer,
-  errorsReducer,
-  loaderReducer,
+  user,
+  songs,
   router: routerReducer,
 });
 
