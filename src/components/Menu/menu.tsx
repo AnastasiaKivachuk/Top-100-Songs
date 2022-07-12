@@ -27,7 +27,7 @@ function AppBar({ email, menuItems, displayName, avatar }: Props): JSX.Element {
   };
 
   return (
-    <MuiAppBar>
+    <MuiAppBar className={styles.wrapper}>
       <Toolbar>
         <Grid container justifyContent="space-between" alignItems="center">
           <Link href={PATH_INDEX} color="inherit">

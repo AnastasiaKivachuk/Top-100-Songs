@@ -1,75 +1,74 @@
 @import '../../assets/scss/helpers/typography';
 
-.title {
-  @include h1;
-  color: $bronze;
-  max-width: 1100px;
-  text-align: center;
-}
-
 .container {
   padding: 40px 15px;
   position: relative;
   min-width: 1000px;
-}
 
-.noData {
-  color: $gray;
-  padding-top: 30px;
-  text-align: center;
-}
+  .title {
+    @include h1;
+    color: $bronze;
+    max-width: 1100px;
+    text-align: center;
+  }
 
-.wrapLoader {
-  display: flex;
-  justify-content: center;
-  margin: 20px;
-}
 
-.video {
-  margin: 20px auto;
-}
+  .wrapLoader {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+  }
 
-.error {
-  @include h3;
-  text-align: center;
-}
 
-.back {
-  @include body-s;
-  align-items: center;
-  color: $darkGray;
-  cursor: pointer;
-  display: flex;
-  left: -20px;
-  position: absolute;
-  top: 56px;
-  transform: translate(-100%, -50%);
-  width: fit-content;
-}
+  .video {
+    margin: 20px auto;
+  }
 
-.mainInfoWrap {
-  @include body-m;
-  margin: 20px 0;
-}
+  .error {
+    @include h3;
+    text-align: center;
+  }
 
-.description {
-  @include h3;
-  color: $darkGray;
-  margin: 20px 0;
-}
+  .back {
+    @include body-s;
+    align-items: center;
+    color: $darkGray;
+    cursor: pointer;
+    display: flex;
+    left: -20px;
+    position: absolute;
+    top: 56px;
+    transform: translate(-100%, -50%);
+    width: fit-content;
+  }
 
-.descriptionData {
-  @include body-s;
-  color: $darkGray;
-  min-height: 1px;
+  .mainInfoWrap {
+    @include body-m;
+    margin: 20px 0;
+  }
 
-  &:not(:last-child) {
-    margin-bottom: 5px;
+  .description {
+    @include h3;
+    color: $darkGray;
+    margin: 20px 0;
+
+    .descriptionData {
+      @include body-s;
+      color: $darkGray;
+      min-height: 1px;
+
+      &:not(:last-child) {
+        margin-bottom: 5px;
+      }
+    }
+
+  }
+
+
+  .link {
+    @include body-m;
+    color: $systemBlueDark;
+    cursor: pointer;
   }
 }
 
-.link {
-  @include body-m;
-  color: $systemBlueDark;
-  cursor: pointer;
-}
