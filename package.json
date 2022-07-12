@@ -1,5 +1,5 @@
 {
-  "name": "top-100-songs",
+  "name": "top-songs",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,7 +9,6 @@
     "lint": "next lint",
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "prettier": "prettier --write .",
     "eslint:fix": "eslint --fix",
     "prepare": "husky install",
     "audit": "audit-ci --config audit-ci.json",

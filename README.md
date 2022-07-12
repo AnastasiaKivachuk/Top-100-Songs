@@ -1,34 +1,71 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). It connects with [Firebase](https://firebase.google.com/), [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) for unit testing, [SCSS](https://sass-scss.ru/) for styling, [Material-UI](https://mui.com/material-ui/getting-started/overview/) for components.
 
-## Getting Started
+Project has a couple of pages:
+- home page (with table of popular songs)
+- song detail page (with information about song)
+- profile page (with form to update profile)
+- sign-in page (with authorization form)
+- sign-up page (with form of creating new user)
+- restore-password page (with form of restore password)
 
-First, run the development server:
+## Commands
+
+Run the development server:
 
 ```bash
-npm run dev
-# or
 yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/auth.context.tsx`. The page auto-updates as you edit the file.
+Run tests:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+```bash
+yarn test
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Run coverage tests:
 
-## Learn More
+```bash
+yarn test:coverage
+```
 
-To learn more about Next.js, take a look at the following resources:
+Run lint:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+yarn lint
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Run lint fix:
 
-## Deploy on Vercel
+```bash
+yarn eslint:fix
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Run stylelint:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```bash
+yarn stylelint
+```
+
+Run stylelint fix:
+
+```bash
+yarn stylelint:fix
+```
+
+Install husky:
+
+```bash
+yarn prepare
+```
+
+Run audit:
+
+```bash
+yarn audit
+```
+
+## Deploy on Heroku
+
+This app was deployed on the [Heroku](https://www.heroku.com/): [top-songs](https://top-songs-app.herokuapp.com/).
