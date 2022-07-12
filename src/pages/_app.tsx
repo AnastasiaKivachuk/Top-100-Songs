@@ -5,8 +5,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import { CssBaseline, ThemeProvider } from '@mui/material';
 
-import { AuthenticationWrapper } from '@contexts/auth.context';
-import Layout from '@containers/Layout';
+import { AuthenticationWrapper } from '@contexts/index';
+import { Layout } from '@modules/Layout';
 import { Provider } from 'react-redux';
 import store from '@redux/store';
 import { ErrorPage } from '@components/ErrorPage';

@@ -1,9 +1,8 @@
 import React from 'react';
-import type { NextPage } from 'next';
 
-import Home from '@containers/Home';
+import { Home } from '@modules/Home';
 
-const HomePage: NextPage = () => (
-  <Home />
-);
+function HomePage(): JSX.Element {
+  return <Home />;
+}
 export default HomePage;

@@ -1,7 +1,9 @@
-import React, { FC } from 'react';
+import React from 'react';
 
-import RestorePassword from '@containers/RestorePassword';
+import { RestorePassword } from '@modules/RestorePassword';
 
-const RestorePasswordPage: FC = () => <RestorePassword />;
+function RestorePasswordPage(): JSX.Element {
+  return <RestorePassword />;
+}
 
 export default RestorePasswordPage;

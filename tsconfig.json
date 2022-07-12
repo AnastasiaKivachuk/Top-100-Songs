@@ -17,19 +17,19 @@
     "baseUrl": ".",
     "paths": {
       "@components/*": [
-        "./src/components/*"
+        "./src/common/components/*"
       ],
       "@constants/*": [
-        "./src/constants/*"
+        "./src/common/constants/*"
       ],
-      "@containers/*": [
-        "./src/containers/*"
+      "@modules/*": [
+        "./src/modules/*"
       ],
       "@helpers/*": [
-        "./src/helpers/*"
+        "./src//common/helpers/*"
       ],
       "@interfaces/*": [
-        "./src/interfaces/*"
+        "./src/common/interfaces/*"
       ],
       "@pages/*": [
         "./src/pages/*"
@@ -43,20 +43,14 @@
       "@assets/*": [
         "./src/assets/*"
       ],
-      "@hooks/*": [
-        "./src/hooks/*"
-      ],
-      "@validators/*": [
-        "./src/validators/*"
-      ],
       "@utils/*": [
         "./src/utils/*"
       ],
       "@contexts/*": [
-        "./src/contexts/*"
+        "./src/common/contexts/*"
       ],
       "@validation/*": [
-        "./src/validation/*"
+        "./src/common/validation/*"
       ]
     }
   },

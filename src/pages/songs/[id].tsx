@@ -1,8 +1,8 @@
 import React from 'react';
-import type { NextPage } from 'next';
-import Details from '@containers/Details';
 
-const DetailsPage: NextPage = () => (
-  <Details />
-);
+import { Details } from '@modules/Details';
+
+function DetailsPage(): JSX.Element {
+  return <Details />;
+}
 export default DetailsPage;

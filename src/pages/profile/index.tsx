@@ -1,6 +1,8 @@
-import React, { FC } from 'react';
-import Profile from '@containers/Profile';
+import React from 'react';
+import { Profile } from '@modules/Profile';
 
-const ProfilePage: FC = () => <Profile />;
+function ProfilePage(): JSX.Element {
+  return <Profile />;
+}
 
 export default ProfilePage;

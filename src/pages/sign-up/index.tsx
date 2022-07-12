@@ -1,6 +1,6 @@
-import React, { FC } from 'react';
+import React from 'react';
 
-import SignInSignUp from '@containers/SignInSignUp';
+import { SignInSignUp } from '@modules/SignInSignUp';
 import { PATH_SIGN_IN } from '@constants/routes.constants';
 import { useAuth } from '@contexts/auth.context';
 
@@ -10,9 +10,9 @@ const props = {
   isSignIn: false,
 };
 
-const SignUpPage: FC = () => {
+function SignUpPage(): JSX.Element {
   const { createUserWithEmailAndPassword } = useAuth();
   return <SignInSignUp request={createUserWithEmailAndPassword} {...props} />;
-};
+}
 
 export default SignUpPage;

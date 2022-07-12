@@ -1,0 +1,96 @@
+/* stylelint-disable block-no-empty */
+@import '../../../assets/scss/helpers/typography';
+
+.progressClassName {
+  opacity: 0 !important;
+}
+
+.toast-container-success {
+  background-color: $systemGreenDark;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba($black, 0.8), 0 6px 16px rgba($black, 0.8);
+  max-width: 388px;
+  padding: 16px;
+}
+
+.toast-container-info {
+  background-color: $systemBlueDark;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba($black, 0.8), 0 6px 16px rgba($black, 0.8);
+  max-width: 388px;
+  padding: 16px;
+}
+
+.toast-container-error {
+  background-color: $systemRedDark;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba($black, 0.8), 0 6px 16px rgba($black, 0.8);
+  max-width: 388px;
+  padding: 16px;
+}
+
+.toast-container-warning {
+  background-color: $systemOrangeDark;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba($black, 0.8), 0 6px 16px rgba($black, 0.8);
+  max-width: 388px;
+  padding: 16px;
+}
+
+.success {
+  @include body-s;
+  color: $white;
+  font-weight: 600;
+  position: relative;
+}
+
+.info {
+  @include body-s;
+  color: $white;
+  font-weight: 600;
+}
+
+.error {
+  @include body-s;
+  color: $white;
+  font-weight: 600;
+}
+
+.warning {
+  @include body-s;
+  color: $white;
+  font-weight: 600;
+}
+
+.wrapBody {
+  align-items: center;
+  display: flex;
+  max-width: 388px;
+}
+
+.wrapBodyWithoutDescription {
+  align-items: flex-start;
+}
+
+.messageBlock {
+  padding-left: 12px;
+  width: 100%;
+}
+
+.description {
+  @include body-s;
+  color: $white;
+  text-transform: none;
+}
+
+.toastBody {
+  padding: 0;
+
+  :global(.Toastify__toast-icon) {
+    display: none !important;
+  }
+}
+
+.close {
+  cursor: pointer;
+}

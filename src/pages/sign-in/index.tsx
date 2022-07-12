@@ -1,12 +1,12 @@
-import React, { FC } from 'react';
+import React from 'react';
 
-import SignInSignUp from '@containers/SignInSignUp';
+import { SignInSignUp } from '@modules/SignInSignUp';
 import { useAuth } from '@contexts/auth.context';
 
-const SignInPage: FC = () => {
+function SignInPage(): JSX.Element {
   const { signInWithEmailAndPassword } = useAuth();
 
   return <SignInSignUp request={signInWithEmailAndPassword} />;
-};
+}
 
 export default SignInPage;
