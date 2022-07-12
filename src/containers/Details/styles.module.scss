@@ -51,19 +51,17 @@
     @include h3;
     color: $darkGray;
     margin: 20px 0;
-
-    .descriptionData {
-      @include body-s;
-      color: $darkGray;
-      min-height: 1px;
-
-      &:not(:last-child) {
-        margin-bottom: 5px;
-      }
-    }
-
   }
 
+  .descriptionData {
+    @include body-s;
+    color: $darkGray;
+    min-height: 1px;
+
+    &:not(:last-child) {
+      margin-bottom: 5px;
+    }
+  }
 
   .link {
     @include body-m;
