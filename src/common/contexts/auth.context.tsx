@@ -49,10 +49,7 @@ export default function AuthenticationWrapper({ children }) {
     return <CircularProgress className={styles.loader} />;
   }
 
-  // TODO fix ts-ignore
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  return <authUserContext.Provider value={auth}>{children}</authUserContext.Provider>;
+  return <authUserContext.Provider value={auth as any}>{children}</authUserContext.Provider>;
 }
 
 export const useAuth = () => useContext(authUserContext);

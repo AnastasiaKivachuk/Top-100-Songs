@@ -46,12 +46,13 @@ function Details(): JSX.Element {
 
   return (
     <div className={styles.container}>
-      <div className={styles.back} onClick={() => router.back()} role="presentation"><ArrowBackIcon /> Back</div>
+      <div className={styles.back} data-testid="back" onClick={() => router.back()} role="presentation"><ArrowBackIcon /> Back</div>
       {loading ? <div className={styles.wrapLoader}><CircularProgress /></div> : details ? (
         <div>
           <Typography
             variant="h1"
             className={styles.title}
+            data-testid="title"
           >{details.snippet.position + 1}. {details.snippet.title}
           </Typography>
           <div className={styles.mainInfoWrap}>

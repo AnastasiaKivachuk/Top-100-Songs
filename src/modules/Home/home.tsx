@@ -29,8 +29,8 @@ function Home(): JSX.Element {
   };
 
   return (
-    <div className={styles.container} onScroll={handleScroll}>
-      <Typography variant="h1" className={styles.title}>TOP Songs of 2022 - Billboard Hot 100 - Music Playlist
+    <div className={styles.container} onScroll={handleScroll} data-testid="container">
+      <Typography variant="h1" className={styles.title} data-testid="title">TOP Songs of 2022 - Billboard Hot 100 - Music Playlist
         2022
       </Typography>
       <Typography variant="body1" className={styles.details}>

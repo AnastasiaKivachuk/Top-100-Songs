@@ -43,10 +43,7 @@ function UploadFile({ onFileUpload, value, name, setError }: Props) {
     );
   };
 
-  // TODO fix type
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  const handleClickOnAvatar = () => inputElement.current !== undefined && inputElement.current?.click();
+  const handleClickOnAvatar = () => inputElement.current !== undefined && (inputElement.current as any)?.click();
 
   return (
     <>
@@ -54,6 +51,7 @@ function UploadFile({ onFileUpload, value, name, setError }: Props) {
         className={styles.info}
         onClick={handleClickOnAvatar}
         role="presentation"
+        data-testid="label"
       >Click to change avatar <ArrowDownwardIcon />
       </div>
       <div className={styles.wrapper}>

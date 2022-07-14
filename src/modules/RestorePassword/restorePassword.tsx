@@ -53,7 +53,7 @@ function RestorePassword(): JSX.Element {
 
   return (
     <Grid container component="main" sx={{ height: 'calc(100vh - 64px)' }} className={styles.container}>
-      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+      <Grid item xs={15} sm={9} md={7} component={Paper} elevation={8} square>
         <Box
           sx={{
             my: 8,

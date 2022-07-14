@@ -13,9 +13,16 @@ const renderComponent = (store): RenderResult => render(
   <Provider store={store}><Profile /></Provider>,
 );
 
+const initStore = { user: { user: { uid: '123',
+  email: 'anastasiya.kivachuk@itrexgroup.com',
+  displayName: '',
+  photoURL: 'https://firebasestorage.googleapis.com/v0/b/top-100-songs-fe870.appspot.com/o/images%2FScreenshot%202022-07-11%20234141.png',
+} } };
+
 describe('Profile Component', () => {
+
   beforeEach(() => {
-    const store = mockStore({});
+    const store = mockStore({ initStore });
     renderComponent(store);
     const useRouter = jest.spyOn(require('next/router'), 'useRouter');
     useRouter.mockImplementation(() => ({
@@ -23,6 +30,7 @@ describe('Profile Component', () => {
       pathname: '',
       query: '',
       asPath: '',
+      back: jest.fn(),
       push: jest.fn(),
       events: {
         on: jest.fn(),
@@ -44,20 +52,17 @@ describe('Profile Component', () => {
     fireEvent.change(inputEl, { target: { value }, name: 'displayName' });
     expect((inputEl as HTMLInputElement).value).toBe(value);
   });
-  //
-  // it('uploadFile', () => {
-  //   const value = 'test';
-  //   const inputEl = screen.getByPlaceholderText('Display Name');
-  //   expect((inputEl as HTMLInputElement).value).toBe('');
-  //   fireEvent.change(inputEl, { target: { value }, name: 'displayName' });
-  //   expect((inputEl as HTMLInputElement).value).toBe(value);
-  // });
 
-  // it('check onSubmit ', () => {
-  //   const email = 'test';
-  //   const inputEl = screen.getByPlaceholderText('example.email@gmail.com');
-  //   fireEvent.change(inputEl, { target: { value: email }, name: 'email' });
-  //   const btn = screen.getByTestId('btn');
-  //   fireEvent.click(btn);
-  // });
+  it('check onSubmit ', () => {
+    const value = 'test';
+    const inputEl = screen.getByPlaceholderText('Display Name');
+    fireEvent.change(inputEl, { target: { value }, name: 'displayName' });
+    const btn = screen.getByTestId('btn');
+    fireEvent.click(btn);
+  });
+
+  it('check cancel ', () => {
+    const btn = screen.getByTestId('cancelBtn');
+    fireEvent.click(btn);
+  });
 });

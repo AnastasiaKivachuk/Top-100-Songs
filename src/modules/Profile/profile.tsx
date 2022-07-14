@@ -140,6 +140,7 @@ function Profile(): JSX.Element {
                 className={styles.btn}
                 onClick={() => router.back()}
                 variant="outlined"
+                data-testid="cancelBtn"
               >Cancel
               </Button>
             </div>

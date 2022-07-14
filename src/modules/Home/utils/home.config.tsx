@@ -77,7 +77,7 @@ export const columns: GridColDef[] = [
     headerAlign: 'center',
     renderCell: (params: GridValueGetterParams) => (
       <Link href={PATH_SONG.replace('[id]', params.row.id)}>
-        <Button variant="outlined" size="small" className={styles.button}>
+        <Button variant="outlined" size="small" className={styles.button} data-testid="buttonDetail">
           Show Details
         </Button>
       </Link>

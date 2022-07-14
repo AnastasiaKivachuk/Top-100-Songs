@@ -9,4 +9,5 @@ export const FORM_FIELDS_ERRORS: MESSAGES_MAP = {
   MAX_LENGTH: 'Max length: [max]',
   DEFAULT_ERROR: 'An error has been occurred',
   ONLY_LATIN: 'Please use only Latin symbols',
+  EMAIL_INCORRECT: 'Email is incorrect',
 };

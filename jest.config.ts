@@ -9,12 +9,12 @@ module.exports = {
   coveragePathIgnorePatterns: [
     '<rootDir>/src/pages/_app.tsx', '<rootDir>/src/pages/_document.js', '<rootDir>/src/common/interfaces', '<rootDir>/src/common/constants',
     '<rootDir>/src/common/validation', '<rootDir>/src/redux/store.ts', '<rootDir>/src/redux/actions', '<rootDir>/src/services',
-    '<rootDir>/src/redux/reducers/index.ts',
+    '<rootDir>/src/redux/reducers/index.ts', '<rootDir>/src/redux/reducers/interfaces',
   ],
   moduleNameMapper: {
     '@src/(.*)': '<rootDir>/src/$1',
     '@constants/(.*)': '<rootDir>/src/common/constants/$1',
-    '@contexts/(.*)': '<rootDir>/src/contexts/$1',
+    '@contexts/(.*)': '<rootDir>/src/common/contexts/$1',
     '@interfaces/(.*)': '<rootDir>/src/common/interfaces/$1',
     '@hooks/(.*)': '<rootDir>/src/hooks/$1',
     '@redux/(.*)': '<rootDir>/src/redux/$1',
