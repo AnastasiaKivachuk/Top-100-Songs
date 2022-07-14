@@ -8,7 +8,7 @@ import {
   ErrorToastrIcon,
   InfoToastrIcon,
   SuccessToastrIcon,
-} from '@constants/icons.constants';
+} from '@components/Toast/constants/icons.constants';
 import {
   TOAST_ERROR, TOAST_INFO, TOAST_POSITIONS, TOAST_SUCCESS, TOAST_WARNING,
 } from '@components/Toast/constants/toast.constants';

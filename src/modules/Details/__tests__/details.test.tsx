@@ -41,7 +41,7 @@ describe('Details Component with error', () => {
     });
     const progressbar = await screen.findByRole('progressbar');
     expect(progressbar).toBeInTheDocument();
-    const text = await screen.findByText('Something went wrong');
+    const text = await screen.findByTestId('error');
     expect(text).toBeInTheDocument();
   });
 
@@ -75,7 +75,7 @@ describe('Details Component with query', () => {
     act(() => {
       render(<Provider store={store}><Details /></Provider>);
     });
-    const text = await screen.findByText('1. Harry Styles - As It Was (Official Video)');
+    const text = await screen.findByTestId('title');
     expect(text).toBeInTheDocument();
   });
 

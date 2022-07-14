@@ -6,7 +6,7 @@ import Avatar from '@mui/material/Avatar';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 
 import firebase from '@root/firebase.config';
-import styles from './uploadFile.module.scss';
+import styles from './sortingSelect.module.scss';
 
 type Props={
   onFileUpload: (val: string) => void,
@@ -14,7 +14,7 @@ type Props={
 
 }
 
-function UploadFile({ onFileUpload, value, name, setError }: Props) {
+function SortingSelect({ onFileUpload, value, name, setError }: Props) {
   const [loading, setLoading] = useState(false);
   const inputElement = useRef();
 
@@ -75,4 +75,4 @@ function UploadFile({ onFileUpload, value, name, setError }: Props) {
   );
 }
 
-export default UploadFile;
+export default SortingSelect;

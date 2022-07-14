@@ -101,7 +101,7 @@ function Details(): JSX.Element {
                 )}
           </div>
         </div>
-      ) : <div className={styles.error}>Something went wrong</div>}
+      ) : <div className={styles.error} data-testid="error">Something went wrong</div>}
     </div>
   );
 }

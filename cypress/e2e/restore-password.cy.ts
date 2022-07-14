@@ -1,16 +1,16 @@
-import { PATH_INDEX, PATH_RESTORE_PASSWORD, PATH_SIGN_IN } from '@constants/routes.constants';
-import firebase from '../../firebase.config';
+import { PATH_RESTORE_PASSWORD, PATH_SIGN_IN } from '@constants/routes.constants';
+import firebase from '@root/firebase.config';
+import { TEST_USER } from '@root/cypress/fixtures/mock.constants';
+import { signOut } from '@services/user.service';
 
 describe('RESTORE PASSWORD', () => {
   beforeEach(() => {
     cy.visit(PATH_RESTORE_PASSWORD);
     const user = firebase.auth().currentUser;
     if (user) {
-      firebase.auth().signOut();
+      signOut();
     }
   });
-
-  const testAcc = 'test@test.test';
 
   it('should render text', () => {
     cy.contains('Restore password');
@@ -39,14 +39,14 @@ describe('RESTORE PASSWORD', () => {
   });
 
   it('can\'t restore password', () => {
-    cy.get('input').type(testAcc);
+    cy.get('input').type(TEST_USER.email);
     cy.get('button').click();
     cy.url().should('include', PATH_SIGN_IN.replace('[id]', ''));
   });
 
   it('check links', () => {
     cy.get('a').should('have.length', 2);
-    cy.get('a').first().should('have.attr', 'href', PATH_INDEX);
+    cy.get('a').first().should('have.attr', 'href', '');
     cy.get('a').last().should('have.attr', 'href', PATH_SIGN_IN);
   });
 });

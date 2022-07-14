@@ -17,7 +17,7 @@ describe('Home Component', () => {
   });
 
   it('should render Home', () => {
-    const text = screen.getByText('TOP Songs of 2022 - Billboard Hot 100 - Music Playlist 2022');
+    const text = screen.getByTestId('title');
     expect(text).toBeInTheDocument();
   });
 

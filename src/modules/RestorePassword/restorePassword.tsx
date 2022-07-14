@@ -18,13 +18,12 @@ import { PATH_SIGN_IN } from '@constants/routes.constants';
 import { FIELD_NAMES, schema } from '@modules/RestorePassword/utils/restorePassword.validation';
 import Link from 'next/link';
 import { TOAST_SUCCESS } from '@components/Toast/constants/toast.constants';
-import { useAuth } from '@contexts/auth.context';
+import { sendPasswordResetEmail } from '@services/user.service';
 import styles from './restorePassword.module.scss';
 
 function RestorePassword(): JSX.Element {
   const [requestError, setRequestError] = useState('');
   const router = useRouter();
-  const { sendPasswordResetEmail } = useAuth();
 
   const {
     setValue, handleSubmit, setError, control, formState: { isSubmitting },

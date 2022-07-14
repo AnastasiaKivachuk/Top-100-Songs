@@ -1,5 +1,5 @@
 import * as yup from 'yup';
-import { emailYup } from '@validation/common';
+import { emailYup } from '@validation/common.valodation';
 
 export const FIELD_NAMES = {
   EMAIL: 'email',

@@ -1,16 +1,16 @@
-import { PATH_INDEX, PATH_RESTORE_PASSWORD, PATH_SIGN_IN, PATH_SIGN_UP } from '@constants/routes.constants';
-import firebase from '../../firebase.config';
+import { PATH_RESTORE_PASSWORD, PATH_SIGN_IN, PATH_SIGN_UP } from '@constants/routes.constants';
+import firebase from '@root/firebase.config';
+import { TEST_USER } from '@root/cypress/fixtures/mock.constants';
+import { signOut } from '@services/user.service';
 
 describe('SIGN IN', () => {
   beforeEach(() => {
     cy.visit(PATH_SIGN_IN);
     const user = firebase.auth().currentUser;
     if (user) {
-      firebase.auth().signOut();
+      signOut();
     }
   });
-  const testAcc = 'test@test.test';
-  const testPassword = '123456';
 
   it('should render text', () => {
     cy.contains('Sign In');
@@ -54,15 +54,15 @@ describe('SIGN IN', () => {
   });
 
   it('check login user on submit', () => {
-    cy.get('input').first().type(testAcc);
-    cy.get('input').eq(1).type(testPassword);
+    cy.get('input').first().type(TEST_USER.email);
+    cy.get('input').eq(1).type(TEST_USER.password);
     cy.get('button').click();
-    cy.contains(testAcc);
+    cy.contains(TEST_USER.email);
   });
 
   it('check links', () => {
     cy.get('a').should('have.length', 3);
-    cy.get('a').first().should('have.attr', 'href', PATH_INDEX);
+    cy.get('a').first().should('have.attr', 'href', '');
     cy.get('a').eq(1).should('have.attr', 'href', PATH_RESTORE_PASSWORD);
     cy.get('a').last().should('have.attr', 'href', PATH_SIGN_UP);
   });

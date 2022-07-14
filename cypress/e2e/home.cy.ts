@@ -4,23 +4,21 @@ import {
   PATH_SIGN_IN,
   PATH_SONG,
 } from '@constants/routes.constants';
-import firebase from '../../firebase.config';
-
-const testAcc = 'test@test.test';
-const testPassword = '123456';
+import firebase from '@root/firebase.config';
+import { TEST_USER } from '@root/cypress/fixtures/mock.constants';
 
 describe('HOME', () => {
   beforeEach(() => {
     cy.visit(PATH_INDEX);
     const user = firebase.auth().currentUser;
     if (!user) {
-      firebase.auth().signInWithEmailAndPassword(testAcc, testPassword);
+      firebase.auth().signInWithEmailAndPassword(TEST_USER.email, TEST_USER.password);
     }
   });
 
   it('should render text', () => {
     cy.get('[data-testid="title"]').should('have.length', 1);
-    cy.contains(testAcc);
+    cy.contains(TEST_USER.email);
   });
 
   it('should check profile path', () => {
@@ -28,13 +26,6 @@ describe('HOME', () => {
     cy.get('li').should('have.length', 2);
     cy.get('li').first().click();
     cy.url().should('include', PATH_PROFILE);
-  });
-
-  it('should sign out', () => {
-    cy.get('[data-testid="avatar"]').click();
-    cy.get('li').should('have.length', 2);
-    cy.get('li').last().click();
-    cy.url().should('include', PATH_SIGN_IN);
   });
 
   it('get data table', () => {
@@ -52,5 +43,12 @@ describe('HOME', () => {
     cy.get('a', { timeout: 5000 }).should('have.length', 23);
     cy.get('[data-testid="buttonDetail"]', { timeout: 5000 }).first().click();
     cy.url().should('include', PATH_SONG.replace('[id]', ''));
+  });
+
+  it('should sign out', () => {
+    cy.get('[data-testid="avatar"]').click();
+    cy.get('li').should('have.length', 2);
+    cy.get('li').last().click();
+    cy.url().should('include', PATH_SIGN_IN);
   });
 });

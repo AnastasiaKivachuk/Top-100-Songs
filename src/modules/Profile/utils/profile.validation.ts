@@ -1,5 +1,5 @@
 import * as yup from 'yup';
-import { stringRequiredYup } from '@validation/common';
+import { stringRequiredYup } from '@validation/common.valodation';
 import { FORM_FIELDS_ERRORS } from '@constants/messages.constants';
 
 export const FIELD_NAMES = {

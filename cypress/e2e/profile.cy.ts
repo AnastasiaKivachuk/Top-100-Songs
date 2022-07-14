@@ -1,16 +1,15 @@
 import { PATH_INDEX, PATH_PROFILE } from '@constants/routes.constants';
+import firebase from '@root/firebase.config';
+import { TEST_USER } from '@root/cypress/fixtures/mock.constants';
+import { signInWithEmailAndPassword } from '@services/user.service';
 import { FORM_FIELDS_ERRORS } from '@constants/messages.constants';
-import firebase from '../../firebase.config';
-
-const testAcc = 'test@test.test';
-const testPassword = '123456';
 
 describe('PROFILE', () => {
   beforeEach(() => {
     cy.visit(PATH_PROFILE);
     const user = firebase.auth().currentUser;
     if (!user) {
-      firebase.auth().signInWithEmailAndPassword(testAcc, testPassword);
+      signInWithEmailAndPassword(TEST_USER.email, TEST_USER.password);
     }
   });
 
@@ -33,10 +32,10 @@ describe('PROFILE', () => {
   });
 
   it('check cancel button', () => {
-    cy.get('a').first().click();
+    cy.visit(PATH_INDEX);
     cy.get('[data-testid="avatar"]').click();
     cy.get('li').first().click();
-    cy.get('[data-testid="cancelBtn"]').click();
+    cy.get('[data-testid="cancelBtn"]', { timeout: 5000 }).click();
     cy.url().should('include', PATH_INDEX);
   });
 

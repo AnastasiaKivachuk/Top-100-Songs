@@ -73,7 +73,7 @@ describe('check homeColumns config', () => {
     if (button?.renderCell) {
       expect(button.renderCell({ row: mockTopSongsStore[0] })).toEqual(
         <Link href={PATH_SONG.replace('[id]', mockTopSongsStore[0].id)}>
-          <Button size="small" variant="outlined">
+          <Button data-testid="buttonDetail" size="small" variant="outlined">
             Show Details
           </Button>
         </Link>,

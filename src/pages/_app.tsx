@@ -5,12 +5,12 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import { CssBaseline, ThemeProvider } from '@mui/material';
 
-import { AuthenticationWrapper } from '@contexts/index';
+import { AuthenticationWrapper } from '@root/src/modules/AuthenticationWrapper/index';
 import { Layout } from '@modules/Layout';
 import { Provider } from 'react-redux';
 import store from '@redux/store';
 import { ErrorPage } from '@components/ErrorPage';
-import { theme } from '@helpers/setupTheme';
+import { theme } from '@helpers/setupTheme.helpers';
 import '@assets/scss/global.scss';
 
 function MyApp({

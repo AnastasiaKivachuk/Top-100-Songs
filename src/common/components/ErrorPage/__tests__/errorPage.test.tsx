@@ -15,10 +15,7 @@ describe('ErrorPage component', () => {
 
   it('should render ErrorPage component with default Props', () => {
     setUp({});
-    expect(screen.getByText(
-      'The page you are looking for doesn\'t exist or an other error occurred. Go back, or head over to the main page.',
-    ))
-      .toBeInTheDocument();
+    expect(screen.getByTestId('subtitle')).toBeInTheDocument();
   });
 
   it('should render ErrorPage component with props', () => {

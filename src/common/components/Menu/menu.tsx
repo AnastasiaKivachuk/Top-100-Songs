@@ -14,7 +14,7 @@ import styles from './menu.module.scss';
 
 type Props = {
   email: string,
-  menuItems: {name: string, icon: JSX.Element, onClick: () => void}[]
+  menuItems: {name: string, icon: JSX.Element, onClick: () => void|Promise<any>}[]
   displayName: string
   avatar: string
 }
@@ -30,7 +30,7 @@ function AppBar({ email, menuItems, displayName, avatar }: Props): JSX.Element {
     <MuiAppBar className={styles.wrapper}>
       <Toolbar>
         <Grid container justifyContent="space-between" alignItems="center">
-          <Link href={PATH_INDEX} color="inherit">
+          <Link href={email ? PATH_INDEX : ''} color="inherit">
             <a className={styles.link} data-testid="link">
               <Typography variant="body1" className={styles.title}>Top songs
               </Typography>

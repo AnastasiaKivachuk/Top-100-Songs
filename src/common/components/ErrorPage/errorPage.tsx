@@ -16,7 +16,7 @@ function ErrorPage({ imageSrc, text }: Props): JSX.Element {
     <div className={styles.pageWrap}>
       <img src={imageSrc} alt="" />
       <h2>Ooops, something went wrong</h2>
-      <div className={styles.subtitle}>
+      <div className={styles.subtitle} data-testid="subtitle">
         {text}
       </div>
       <Link href={PATH_INDEX}>

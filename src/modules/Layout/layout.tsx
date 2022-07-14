@@ -1,21 +1,27 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 
 import { Container } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 import LogoutIcon from '@mui/icons-material/Logout';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { StoreDTO } from '@redux/interfaces/store.interface';
 import { AppBar } from '@components/Menu';
 import { useRouter } from 'next/router';
 import { PATH_PROFILE } from '@constants/routes.constants';
-import { useAuth } from '@contexts/auth.context';
+import { signOut } from '@services/user.service';
+import { setUser, setUserLoading } from '@redux/actions/actionCreator';
 import styles from './layout.module.scss';
 
 function Layout({ children }: { children: JSX.Element }): JSX.Element {
   const router = useRouter();
+  const dispatch = useDispatch();
   const authUser = useSelector((state: StoreDTO) => state.user?.user);
-  const { signOut } = useAuth();
+
+  const onSignOut = () => signOut().then(() => {
+    dispatch(setUser({ user: null }));
+    setUserLoading(true);
+  });
 
   const menuItems = useMemo(
     () => (
@@ -27,11 +33,11 @@ function Layout({ children }: { children: JSX.Element }): JSX.Element {
         },
         {
           name: 'Sign out',
-          onClick: signOut,
+          onClick: onSignOut,
           icon: <LogoutIcon />,
         },
       ]),
-    [signOut],
+    [onSignOut],
   );
   return (
     <>

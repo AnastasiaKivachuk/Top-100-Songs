@@ -17,7 +17,7 @@ describe('HomePage', () => {
     act(() => {
       render(<Provider store={store}><HomePage /></Provider>);
     });
-    const text = await screen.findByText('TOP Songs of 2022 - Billboard Hot 100 - Music Playlist 2022');
+    const text = await screen.findByTestId('title');
     expect(text).toBeInTheDocument();
   });
 });

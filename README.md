@@ -1,4 +1,5 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). It connects with [Firebase](https://firebase.google.com/), [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) for unit testing, [SCSS](https://sass-scss.ru/) for styling, [Material-UI](https://mui.com/material-ui/getting-started/overview/) for components.
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). It connects with [Firebase](https://firebase.google.com/), [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) for unit testing, [SCSS](https://sass-scss.ru/) for styling, [Material-UI](https://mui.com/material-ui/getting-started/overview/) for components, [Cypress](https://docs.cypress.io/guides/overview/why-cypress) for e2e tests.
+This app was deployed on the [Heroku](https://www.heroku.com/): [top-songs](https://top-songs-app.herokuapp.com/).
 
 Project has a couple of pages:
 - home page (with table of popular songs)
@@ -66,6 +67,8 @@ Run audit:
 yarn audit
 ```
 
-## Deploy on Heroku
+Run e2e test:
 
-This app was deployed on the [Heroku](https://www.heroku.com/): [top-songs](https://top-songs-app.herokuapp.com/).
+```bash
+yarn cy:run 
+```

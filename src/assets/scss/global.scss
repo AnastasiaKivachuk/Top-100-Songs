@@ -57,10 +57,4 @@ body {
     @include link();
   }
 
-  p {
-    @include body-m();
-  }
-
-  span {
-    @include body-s(); }
 }

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { SignInSignUp } from '@modules/SignInSignUp';
 import { PATH_SIGN_IN } from '@constants/routes.constants';
-import { useAuth } from '@contexts/auth.context';
+import { createUserWithEmailAndPassword } from '@services/user.service';
 
 const props = {
   addedLink: { text: 'Already have an account? Sign in', link: PATH_SIGN_IN },
@@ -11,7 +11,6 @@ const props = {
 };
 
 function SignUpPage(): JSX.Element {
-  const { createUserWithEmailAndPassword } = useAuth();
   return <SignInSignUp request={createUserWithEmailAndPassword} {...props} />;
 }
 

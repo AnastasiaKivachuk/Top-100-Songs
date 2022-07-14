@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
 
@@ -6,18 +6,11 @@ import { CircularProgress } from '@mui/material';
 
 import { NON_AUTH_PATHS, PATH_INDEX, PATH_SIGN_IN, PATHS_WITH_AUTH } from '@constants/routes.constants';
 import { StoreDTO } from '@redux/interfaces/store.interface';
-import useFirebaseAuth from './hooks/auth.hooks';
-import styles from './auth.module.scss';
+import useFirebaseAuth from './hooks/authenticationWrapper.hooks';
+import styles from './authenticationWrapper.module.scss';
 
-const authUserContext = createContext({
-  signInWithEmailAndPassword: async (email: string, password: string) => {},
-  createUserWithEmailAndPassword: async (email: string, password: string) => {},
-  signOut: async () => {},
-  sendPasswordResetEmail: async (email: string) => {},
-});
-
-export default function AuthenticationWrapper({ children }) {
-  const auth = useFirebaseAuth();
+export default function ({ children }) {
+  useFirebaseAuth();
   const [isMount, setMount] = useState(false);
   const router = useRouter();
   const [loadingLocal, setLoading] = useState(false);
@@ -48,8 +41,5 @@ export default function AuthenticationWrapper({ children }) {
   if (isLoading || loadingLocal || isLoadingInitTopSongs) {
     return <CircularProgress className={styles.loader} />;
   }
-
-  return <authUserContext.Provider value={auth as any}>{children}</authUserContext.Provider>;
+  return children;
 }
-
-export const useAuth = () => useContext(authUserContext);
