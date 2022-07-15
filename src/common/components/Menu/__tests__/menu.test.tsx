@@ -14,13 +14,37 @@ const menuItems = [
 
 describe('AppBar with fulfilled props', () => {
   const email = 'example@example.com';
-  beforeEach(() => render(<AppBar email={email} menuItems={menuItems} avatar="/images/500.svg" displayName="displayName" />));
+  const displayName = 'displayName';
+  const avatar = 'http://localhost/images/500.svg';
+  beforeEach(() => render(<AppBar email={email} menuItems={menuItems} avatar={avatar} displayName={displayName} />));
 
   it('should display AppBar header with user', async () => {
     const topText = await screen.findByTestId('link');
     expect(topText).toBeInTheDocument();
     expect(screen.getByText(email)).toBeInTheDocument();
     expect(screen.queryByTestId('avatar')).toBeTruthy();
+    expect(screen.queryByText(displayName)).toBeInTheDocument();
+    expect(screen.queryByRole('img').src).toEqual(avatar);
+  });
+
+  it('should display menu by click and hide by second click', () => {
+    const avatarEl = screen.queryByTestId('avatar');
+    fireEvent.click(avatarEl);
+    const menu = screen.queryByTestId('menu');
+    expect(menu).toBeInTheDocument();
+  });
+});
+
+describe('AppBar with half of fulfilled props', () => {
+  const email = 'example@example.com';
+  beforeEach(() => render(<AppBar email={email} menuItems={menuItems} avatar="" displayName="" />));
+
+  it('should display AppBar header with user', async () => {
+    const topText = await screen.findByTestId('link');
+    expect(topText).toBeInTheDocument();
+    expect(screen.getByText(email)).toBeInTheDocument();
+    expect(screen.queryByTestId('avatar')).toBeTruthy();
+    expect(screen.queryByRole('img').src).toEqual('http://localhost/static/images/avatar/2.jpg');
   });
 
   it('should display menu by click and hide by second click', () => {

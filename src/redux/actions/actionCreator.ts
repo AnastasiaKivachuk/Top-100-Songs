@@ -1,4 +1,5 @@
 import {
+  CHANGE_SORT_FIELD,
   SET_INIT_LOADING_DATA, SET_LOADING_DATA,
   SET_MORE_SONGS,
   SET_TOP_SONGS, SET_TOP_SONGS_ERROR, SET_USER, SET_USER_LOADING,
@@ -36,5 +37,9 @@ export const setLoadingData = (payload) => ({
 
 export const setTopSongsError = (payload) => ({
   type: SET_TOP_SONGS_ERROR,
+  payload,
+});
+export const setSortField = (payload) => ({
+  type: CHANGE_SORT_FIELD,
   payload,
 });

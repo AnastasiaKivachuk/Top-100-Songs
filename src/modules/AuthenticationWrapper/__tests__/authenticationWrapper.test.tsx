@@ -44,6 +44,17 @@ describe('authContext without user', () => {
     expect(firstLoading).toBeInTheDocument();
     expect(routerMock.push).toBeCalled();
   });
+
+  it('default push', async () => {
+    const storeWithUndefined = mockStore({ user: { user: undefined, isLoading: true } });
+    act(() => {
+      renderComponent(storeWithUndefined);
+    });
+
+    const firstLoading = await screen.findByRole('progressbar');
+    expect(firstLoading).toBeInTheDocument();
+    expect(routerMock.push).toBeCalled();
+  });
 });
 
 const routerMockSignIn = {

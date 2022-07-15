@@ -3,40 +3,41 @@ import { COLLECTION_NAME, PAGINATION_DEFAULT_TAKE, SORT_DIRECTIONS } from '@cons
 import { TOAST_ERROR } from '@components/Toast/constants/toast.constants';
 import firebase from '@root/firebase.config';
 
-export const itemsFirstBatch = async () => {
+// export const itemsFirstBatch = async () => {
+//   try {
+//     const data = await firebase.firestore()
+//       .collection(COLLECTION_NAME)
+//       .orderBy('snippet.position', SORT_DIRECTIONS.ASC)
+//       .limit(PAGINATION_DEFAULT_TAKE)
+//       .get();
+//     const songs = [];
+//     let lastKey = '';
+//     data.forEach((doc) => {
+//       songs.push(doc.data());
+//       lastKey = doc.data().snippet.position;
+//     });
+//     return { songs, lastKey };
+//   } catch (e) {
+//     showToast(e.message, TOAST_ERROR);
+//   }
+// };
+
+export const itemsNextBatch = async (key, field, sortDirection = SORT_DIRECTIONS.ASC) => {
+
   try {
     const data = await firebase.firestore()
       .collection(COLLECTION_NAME)
-      .orderBy('snippet.position', SORT_DIRECTIONS.ASC)
-      .limit(PAGINATION_DEFAULT_TAKE)
-      .get();
-    const songs = [];
-    let lastKey = '';
-    data.forEach((doc) => {
-      songs.push(doc.data());
-      lastKey = doc.data().snippet.position;
-    });
-    return { songs, lastKey };
-  } catch (e) {
-    showToast(e.message, TOAST_ERROR);
-  }
-};
-
-export const itemsNextBatch = async (key) => {
-
-  try {
-    const data = await firebase.firestore()
-      .collection(COLLECTION_NAME)
-      .orderBy('snippet.position', SORT_DIRECTIONS.ASC)
+      .orderBy(field, sortDirection)
       .startAfter(key)
       .limit(PAGINATION_DEFAULT_TAKE)
       .get();
 
     const songs = [];
     let lastKey = '';
+    const fieldName = field.split('.')[1];
     data.forEach((doc) => {
       songs.push(doc.data());
-      lastKey = doc.data().snippet.position;
+      lastKey = doc.data().snippet[fieldName];
     });
     return { songs, lastKey };
   } catch (e) {
@@ -63,7 +64,7 @@ export const getDetails = async (id) => {
   }
 };
 
-export const itemsFilter = async (field: string, sortDirection = SORT_DIRECTIONS.ASC) => {
+export const itemsFirstBatch = async (field: string, sortDirection = SORT_DIRECTIONS.ASC) => {
   try {
     const data = await firebase.firestore()
       .collection(COLLECTION_NAME)
@@ -72,9 +73,10 @@ export const itemsFilter = async (field: string, sortDirection = SORT_DIRECTIONS
       .get();
     const songs = [];
     let lastKey = '';
+    const fieldName = field.split('.')[1];
     data.forEach((doc) => {
       songs.push(doc.data());
-      lastKey = doc.data().snippet.position;
+      lastKey = doc.data().snippet[fieldName];
     });
     return { songs, lastKey };
   } catch (e) {

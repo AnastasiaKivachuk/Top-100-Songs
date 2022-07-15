@@ -13,3 +13,5 @@ export enum SORT_DIRECTIONS {
 }
 
 export const MAX_LENGTH_TEXT = 500;
+
+export const SORT_BY = 'snippet.position-asc';

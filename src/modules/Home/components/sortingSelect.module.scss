@@ -1,0 +1,26 @@
+@import '../../../assets/scss/helpers/variables';
+@import '../../../assets/scss/helpers/typography';
+
+.wrapper {
+  align-items: center;
+  display: flex;
+  gap: 5px;
+  flex-direction: row;
+
+  .label {
+    @include body-m;
+    align-self: end;
+    color: $gray;
+    display: block;
+    position: unset;
+  }
+
+  :global {
+    .MuiSelect-select {
+      @include body-s;
+      color: $darkGray;
+    }
+  }
+}
+
+

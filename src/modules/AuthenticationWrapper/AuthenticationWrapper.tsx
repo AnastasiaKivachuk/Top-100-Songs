@@ -15,7 +15,6 @@ export default function ({ children }) {
   const [loadingLocal, setLoading] = useState(false);
   const user = useSelector((state: StoreDTO) => state.user?.user);
   const isLoading = useSelector((state: StoreDTO) => state.user?.isLoading);
-  const isLoadingInitTopSongs = useSelector((state: StoreDTO) => state.songs?.isInitLoading);
 
   useEffect(() => {
     (async () => {
@@ -33,7 +32,7 @@ export default function ({ children }) {
   if (isLoading && user === undefined && PATHS_WITH_AUTH.includes(router.pathname)) {
     router.push(PATH_SIGN_IN);
   }
-  if (isLoading || loadingLocal || isLoadingInitTopSongs || user === undefined) {
+  if (isLoading || loadingLocal || user === undefined) {
     return <CircularProgress className={styles.loader} />;
   }
   return children;

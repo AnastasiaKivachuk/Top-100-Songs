@@ -1,4 +1,6 @@
+import { SORT_BY } from '@constants/global.constants';
 import {
+  CHANGE_SORT_FIELD,
   SET_INIT_LOADING_DATA,
   SET_LOADING_DATA,
   SET_MORE_SONGS,
@@ -12,6 +14,7 @@ const initialState = {
   isLoading: false,
   error: null,
   isInitLoading: false,
+  sortBy: SORT_BY,
 };
 
 const songs = (state = initialState, { type, payload }) => {
@@ -32,6 +35,11 @@ const songs = (state = initialState, { type, payload }) => {
       return {
         ...state,
         isLoading: payload.isLoading,
+      };
+    case CHANGE_SORT_FIELD:
+      return {
+        ...state,
+        sortBy: payload.sortBy,
       };
     case SET_TOP_SONGS_ERROR:
       return {

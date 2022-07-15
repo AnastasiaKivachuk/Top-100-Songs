@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { StoreDTO } from '@redux/interfaces/store.interface';
 import { LOAD_MORE_SONGS } from '@redux/constants';
 import { CHILLAX_PATH, PLAYLIST_CHILLAX_PATH } from '@constants/routes.constants';
+import SortingSelect from '@modules/Home/components/sortingSelect';
 import styles from './home.module.scss';
 
 function Home(): JSX.Element {
@@ -16,7 +17,7 @@ function Home(): JSX.Element {
   const stateSongs = useSelector((state: StoreDTO) => state.songs);
 
   const fetchMorePosts = () => {
-    if (stateSongs.lastKey > 0) {
+    if (stateSongs.lastKey > 0 || (typeof stateSongs.lastKey === 'string' && stateSongs.lastKey.length > 0)) {
       dispatch({ type: LOAD_MORE_SONGS });
     }
   };
@@ -38,27 +39,27 @@ function Home(): JSX.Element {
         Popular Charts. <a target="_blank" href={PLAYLIST_CHILLAX_PATH} rel="noreferrer">This Playlist</a> was
         took from channel: <a target="_blank" href={CHILLAX_PATH} rel="noreferrer">Chillax</a>
       </Typography>
+      <div className={styles.wrapSort}><SortingSelect /></div>
       <div className={styles.tableWrap}>
-        {stateSongs?.topSongs?.length > 0
-          ? (
-            <DataGrid
-              rows={stateSongs.topSongs || []}
-              columns={columns}
-              rowsPerPageOptions={[]}
-              hideFooterPagination
-              hideFooterSelectedRowCount
-              hideFooter
-              autoHeight
-              disableColumnMenu
-              disableColumnFilter
-              disableColumnSelector
-              className={styles.table}
-            />
-          )
-          : <Typography variant="h4" textAlign="center" className={styles.noData}>No Data</Typography>}
-        {stateSongs?.isLoading && (
-          <div className={styles.wrap}><CircularProgress /></div>
-        ) }
+        {stateSongs?.isInitLoading ? (<div className={styles.wrap}><CircularProgress /></div>)
+          : stateSongs?.topSongs?.length > 0
+            ? (
+              <DataGrid
+                rows={stateSongs.topSongs || []}
+                columns={columns}
+                rowsPerPageOptions={[]}
+                hideFooterPagination
+                hideFooterSelectedRowCount
+                hideFooter
+                autoHeight
+                disableColumnMenu
+                disableColumnFilter
+                disableColumnSelector
+                className={styles.table}
+              />
+            )
+            : <Typography variant="h4" textAlign="center" className={styles.noData}>No Data</Typography>}
+        {stateSongs?.isLoading && (<div className={styles.wrap}><CircularProgress /></div>)}
       </div>
     </div>
   );
