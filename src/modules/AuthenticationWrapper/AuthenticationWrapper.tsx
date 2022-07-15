@@ -11,7 +11,6 @@ import styles from './authenticationWrapper.module.scss';
 
 export default function ({ children }) {
   useFirebaseAuth();
-  const [isMount, setMount] = useState(false);
   const router = useRouter();
   const [loadingLocal, setLoading] = useState(false);
   const user = useSelector((state: StoreDTO) => state.user?.user);
@@ -31,14 +30,10 @@ export default function ({ children }) {
     })();
   }, [user, isLoading]);
 
-  useEffect(() => {
-    setMount(true);
-  }, []);
-
-  if (isLoading && user === undefined && PATHS_WITH_AUTH.includes(router.pathname) && isMount) {
+  if (isLoading && user === undefined && PATHS_WITH_AUTH.includes(router.pathname)) {
     router.push(PATH_SIGN_IN);
   }
-  if (isLoading || loadingLocal || isLoadingInitTopSongs) {
+  if (isLoading || loadingLocal || isLoadingInitTopSongs || user === undefined) {
     return <CircularProgress className={styles.loader} />;
   }
   return children;

@@ -14,13 +14,13 @@ const formatAuthUser = (user) => ({
 export default function useFirebaseAuth() {
   const dispatch = useDispatch();
   const authStateChanged = useCallback((authState) => {
+    setUserLoading(true);
     if (!authState) {
       dispatch(setUser({ user: null }));
       setUserLoading(false);
       return;
     }
 
-    setUserLoading(true);
     const formattedUser = formatAuthUser(authState);
     dispatch(setUser({ user: formattedUser }));
     setUserLoading(false);
