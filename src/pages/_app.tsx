@@ -12,6 +12,7 @@ import store from '@redux/store';
 import { ErrorPage } from '@components/ErrorPage';
 import { theme } from '@helpers/setupTheme.helpers';
 import '@assets/scss/global.scss';
+import { ConnectedRouter } from 'connected-next-router';
 
 function MyApp({
   Component,
@@ -30,9 +31,12 @@ function MyApp({
       <CssBaseline />
       <Provider store={store}>
         <AuthenticationWrapper>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
+          <ConnectedRouter>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+
+          </ConnectedRouter>
         </AuthenticationWrapper>
       </Provider>
       <ToastContainer

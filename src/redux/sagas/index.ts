@@ -2,7 +2,8 @@ import { put, call, takeLatest, select } from 'redux-saga/effects';
 
 import { itemsFirstBatch, itemsNextBatch } from '@services/songs.service';
 import { PATH_INDEX } from '@constants/routes.constants';
-import { CHANGE_SORT_FIELD, LOAD_MORE_SONGS, SET_USER } from '../constants';
+import { LOCATION_CHANGE } from 'connected-next-router';
+import { CHANGE_SORT_FIELD, LOAD_MORE_SONGS } from '../constants';
 import {
   setLoadingData,
   setLoadingInitData,
@@ -48,7 +49,7 @@ export function* watchSaga() {
 }
 
 export default function* rootSaga() {
-  yield takeLatest(SET_USER, watchSaga);
+  yield takeLatest(LOCATION_CHANGE, watchSaga);
   yield takeLatest(LOAD_MORE_SONGS, handleMoreSongs);
   yield takeLatest(CHANGE_SORT_FIELD, handleTopSongs);
 }
