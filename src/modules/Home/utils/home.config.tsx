@@ -7,7 +7,6 @@ import Button from '@mui/material/Button';
 import Link from 'next/link';
 import { DATE_FORMAT } from '@constants/global.constants';
 import { PATH_SONG, YOUTUBE_CHANEL_PATH, YOUTUBE_VIDEO_PATH } from '@constants/routes.constants';
-import { itemsFilter } from '@services/songs.service';
 import styles from '../home.module.scss';
 
 export const columns: GridColDef[] = [
